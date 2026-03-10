@@ -1,20 +1,23 @@
 import { useState, useEffect, useRef } from 'react';
 import { Icon } from '@iconify/react';
-import { apiGetPublicServices } from '../services/api';
-
-const TABS = [
-  { key: 'all', label: 'ดูทั้งหมด' },
-  { key: 'recommended', label: 'แนะนำบริการ' },
-  { key: 'promotion', label: 'โปรโมชั่น' },
-];
+import { apiGetPublicServices, apiGetServiceCategories } from '../services/api';
 
 const ServicesSection = () => {
   const [services, setServices] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [activeTab, setActiveTab] = useState('all');
   const [loading, setLoading] = useState(true);
+  const [favorites, setFavorites] = useState({});
   const scrollRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
+  const [activeDot, setActiveDot] = useState(0);
+
+  useEffect(() => {
+    apiGetServiceCategories()
+      .then((res) => { if (res.success) setCategories(res.data || []); })
+      .catch(() => {});
+  }, []);
 
   useEffect(() => {
     fetchServices();
@@ -24,12 +27,9 @@ const ServicesSection = () => {
     setLoading(true);
     try {
       const params = {};
-      if (activeTab === 'recommended') params.recommended = 'true';
-      if (activeTab === 'promotion') params.promotion = 'true';
+      if (activeTab !== 'all') params.category = activeTab;
       const result = await apiGetPublicServices(params);
-      if (result.success) {
-        setServices(result.data || []);
-      }
+      if (result.success) setServices(result.data || []);
     } catch {
       // ignore
     } finally {
@@ -42,6 +42,8 @@ const ServicesSection = () => {
     if (!el) return;
     setCanScrollLeft(el.scrollLeft > 0);
     setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 4);
+    const cardWidth = 280;
+    setActiveDot(Math.round(el.scrollLeft / cardWidth));
   };
 
   useEffect(() => {
@@ -58,21 +60,37 @@ const ServicesSection = () => {
   const scroll = (dir) => {
     const el = scrollRef.current;
     if (!el) return;
-    const amount = 300;
-    el.scrollBy({ left: dir === 'left' ? -amount : amount, behavior: 'smooth' });
+    el.scrollBy({ left: dir === 'left' ? -300 : 300, behavior: 'smooth' });
+  };
+
+  const toggleFavorite = (id) => {
+    setFavorites((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
   const formatPrice = (val) => {
     const num = parseFloat(val);
-    if (!num && num !== 0) return '-';
+    if (!num && num !== 0) return null;
     return num.toLocaleString('th-TH');
   };
+
+  const formatPriceRange = (min, max) => {
+    const a = formatPrice(min);
+    const b = formatPrice(max);
+    if (!a) return null;
+    if (!b) return `${a} THB`;
+    return `${a} - ${b} THB`;
+  };
+
+  const tabs = [{ key: 'all', label: 'ดูทั้งหมด' }, ...categories.map((c) => ({ key: c, label: c }))];
+
+  const totalDots = Math.max(0, services.length - 3);
 
   return (
     <section className="py-16 bg-white dark:bg-darklight">
       <div className="container mx-auto max-w-6xl px-4">
+
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8" data-aos="fade-up">
+        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-8" data-aos="fade-up">
           <div>
             <h2 className="text-2xl md:text-3xl font-bold text-midnight_text dark:text-white">
               แพ็กเกจและโปรโมชั่น
@@ -80,9 +98,9 @@ const ServicesSection = () => {
             <div className="w-12 h-1 bg-primary rounded-full mt-2" />
           </div>
 
-          {/* Tabs */}
+          {/* Category tabs */}
           <div className="flex flex-wrap gap-2">
-            {TABS.map((tab) => (
+            {tabs.map((tab) => (
               <button
                 key={tab.key}
                 onClick={() => setActiveTab(tab.key)}
@@ -104,7 +122,7 @@ const ServicesSection = () => {
           {canScrollLeft && (
             <button
               onClick={() => scroll('left')}
-              className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white dark:bg-darkmode shadow-lg border border-border dark:border-dark_border flex items-center justify-center text-midnight_text hover:bg-primary hover:text-white hover:border-primary transition-all cursor-pointer"
+              className="absolute -left-4 top-[40%] -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white dark:bg-darkmode shadow-lg border border-border dark:border-dark_border flex items-center justify-center text-midnight_text hover:bg-primary hover:text-white hover:border-primary transition-all cursor-pointer"
             >
               <Icon icon="mdi:chevron-left" width="24" />
             </button>
@@ -114,25 +132,24 @@ const ServicesSection = () => {
           {canScrollRight && (
             <button
               onClick={() => scroll('right')}
-              className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white dark:bg-darkmode shadow-lg border border-border dark:border-dark_border flex items-center justify-center text-midnight_text hover:bg-primary hover:text-white hover:border-primary transition-all cursor-pointer"
+              className="absolute -right-4 top-[40%] -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white dark:bg-darkmode shadow-lg border border-border dark:border-dark_border flex items-center justify-center text-midnight_text hover:bg-primary hover:text-white hover:border-primary transition-all cursor-pointer"
             >
               <Icon icon="mdi:chevron-right" width="24" />
             </button>
           )}
 
-          {/* Scrollable container */}
+          {/* Scrollable row */}
           <div
             ref={scrollRef}
-            className="flex gap-5 overflow-x-auto scrollbar-hide pb-2 snap-x snap-mandatory"
+            className="flex gap-5 overflow-x-auto pb-2 snap-x snap-mandatory"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {loading ? (
-              // Skeleton
               [...Array(4)].map((_, i) => (
                 <div key={i} className="shrink-0 w-[260px] animate-pulse">
-                  <div className="bg-section dark:bg-darkmode rounded-2xl h-[200px]" />
+                  <div className="bg-section dark:bg-darkmode rounded-2xl h-[220px]" />
                   <div className="mt-3 h-4 bg-section dark:bg-darkmode rounded w-3/4" />
-                  <div className="mt-2 h-3 bg-section dark:bg-darkmode rounded w-1/2" />
+                  <div className="mt-2 h-3 bg-section dark:bg-darkmode rounded w-1/3" />
                 </div>
               ))
             ) : services.length === 0 ? (
@@ -142,14 +159,11 @@ const ServicesSection = () => {
               </div>
             ) : (
               services.map((s) => (
-                <div
-                  key={s.id}
-                  className="shrink-0 w-[260px] snap-start group/card"
-                >
-                  {/* Card */}
-                  <div className="bg-white dark:bg-darkmode rounded-2xl border border-border dark:border-dark_border overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300">
+                <div key={s.id} className="shrink-0 w-[260px] snap-start group/card">
+                  <div className="bg-white dark:bg-darkmode rounded-2xl border border-border dark:border-dark_border overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col h-full">
+
                     {/* Image */}
-                    <div className="relative h-[200px] overflow-hidden">
+                    <div className="relative h-[210px] overflow-hidden">
                       {s.image_url ? (
                         <img
                           src={s.image_url}
@@ -157,65 +171,98 @@ const ServicesSection = () => {
                           className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-500"
                         />
                       ) : (
-                        <div className="w-full h-full bg-section dark:bg-darklight flex items-center justify-center">
-                          <Icon icon="mdi:medical-bag" width="48" className="text-grey/20" />
+                        <div className="w-full h-full bg-gradient-to-br from-section to-blue-50 dark:from-darklight dark:to-darkmode flex items-center justify-center">
+                          <Icon icon="mdi:medical-bag" width="52" className="text-primary/20" />
                         </div>
                       )}
 
-                      {/* Branch badge */}
+                      {/* Branch watermark — top left */}
                       {s.branch && (
-                        <span className="absolute top-3 left-3 bg-white/90 dark:bg-darkmode/90 backdrop-blur-sm text-xs font-medium px-2.5 py-1 rounded-lg text-midnight_text dark:text-white flex items-center gap-1">
-                          <Icon icon="mdi:map-marker" width="12" className="text-primary" />
+                        <span className="absolute top-3 left-3 flex items-center gap-1.5 bg-white dark:bg-darkmode/90 backdrop-blur-md text-midnight_text dark:text-white text-[11px] font-semibold px-2.5 py-1.5 rounded-xl shadow-md">
+                          <Icon icon="mdi:hospital-building" width="13" className="text-primary shrink-0" />
                           {s.branch}
                         </span>
                       )}
 
-                      {/* Favorite button */}
-                      <button className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/80 dark:bg-darkmode/80 backdrop-blur-sm flex items-center justify-center text-grey hover:text-red-500 transition-colors cursor-pointer">
-                        <Icon icon="mdi:heart-outline" width="18" />
+                      {/* Heart / Favorite button */}
+                      <button
+                        onClick={() => toggleFavorite(s.id)}
+                        className="absolute top-3 right-3 w-9 h-9 rounded-full bg-white dark:bg-darkmode/90 backdrop-blur-md flex items-center justify-center shadow-md hover:scale-110 active:scale-95 transition-transform duration-200 cursor-pointer"
+                      >
+                        <Icon
+                          icon={favorites[s.id] ? 'mdi:heart' : 'mdi:heart-outline'}
+                          width="19"
+                          className={favorites[s.id] ? 'text-red-500' : 'text-primary'}
+                        />
                       </button>
 
-                      {/* Price overlay */}
-                      <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between">
-                        {s.is_promotion && s.original_price > 0 && s.original_price > s.price && (
-                          <span className="bg-black/50 backdrop-blur-sm text-white/70 text-xs px-2 py-0.5 rounded line-through">
-                            {formatPrice(s.original_price)} THB
-                          </span>
-                        )}
-                        <span className="bg-primary/90 backdrop-blur-sm text-white text-sm font-bold px-3 py-1 rounded-lg ml-auto">
-                          {formatPrice(s.price)} THB
-                        </span>
+                      {/* Price overlay at bottom of image */}
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent px-3 pt-10 pb-3">
+                        {(() => {
+                          const origRange = formatPriceRange(s.original_price, s.original_price_max);
+                          const origMin = formatPrice(s.original_price);
+                          const priceMin = formatPrice(s.price);
+                          const showOrig = origMin && parseFloat(s.original_price) > parseFloat(s.price);
+                          return (
+                            <>
+                              {showOrig && origRange && (
+                                <p className="text-white/60 text-xs line-through leading-tight tracking-wide">
+                                  {origRange}
+                                </p>
+                              )}
+                              {priceMin && (
+                                <p className="text-white font-extrabold text-base leading-tight drop-shadow">
+                                  {formatPriceRange(s.price, s.price_max)}
+                                </p>
+                              )}
+                            </>
+                          );
+                        })()}
                       </div>
                     </div>
 
                     {/* Content */}
-                    <div className="p-4">
-                      <h3 className="font-semibold text-midnight_text dark:text-white text-sm leading-snug line-clamp-2 min-h-[40px]">
+                    <div className="p-4 flex flex-col gap-3 flex-1">
+                      <h3 className="font-bold text-midnight_text dark:text-white text-sm leading-snug line-clamp-2 min-h-[40px]">
                         {s.name}
                       </h3>
+
+                      {/* Branch badge */}
                       {s.branch && (
-                        <p className="text-xs text-grey dark:text-white/40 mt-1 flex items-center gap-1">
+                        <span className="inline-flex items-center self-start gap-1.5 bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full border border-primary/20">
                           <Icon icon="mdi:hospital-building" width="12" />
                           {s.branch}
-                        </p>
+                        </span>
                       )}
 
-                      {/* Action buttons */}
-                      <div className="flex gap-2 mt-3">
-                        <button className="flex-1 inline-flex items-center justify-center gap-1.5 bg-primary text-white text-xs font-semibold px-3 py-2 rounded-lg hover:bg-blue-700 transition-colors cursor-pointer">
-                          <Icon icon="mdi:cart-plus" width="16" />
-                          เพิ่ม
-                        </button>
-                        <button className="flex-1 inline-flex items-center justify-center gap-1.5 border border-border dark:border-dark_border text-midnight_text dark:text-white text-xs font-medium px-3 py-2 rounded-lg hover:bg-section dark:hover:bg-darklight transition-colors cursor-pointer">
-                          รายละเอียด
-                        </button>
-                      </div>
+                      {/* Detail button */}
+                      <button className="mt-auto w-full border-2 border-border dark:border-dark_border text-midnight_text dark:text-white text-sm font-semibold py-2.5 rounded-xl hover:border-primary hover:text-primary hover:bg-primary/5 dark:hover:text-primary dark:hover:bg-primary/10 transition-all duration-200 cursor-pointer">
+                        รายละเอียด
+                      </button>
                     </div>
                   </div>
                 </div>
               ))
             )}
           </div>
+
+          {/* Pagination dots */}
+          {!loading && totalDots > 0 && (
+            <div className="flex justify-start gap-1.5 mt-4 pl-1">
+              {[...Array(totalDots + 1)].map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => {
+                    const el = scrollRef.current;
+                    if (el) el.scrollTo({ left: i * 280, behavior: 'smooth' });
+                  }}
+                  className={`h-1.5 rounded-full transition-all cursor-pointer ${
+                    i === activeDot ? 'w-6 bg-primary' : 'w-1.5 bg-border dark:bg-dark_border'
+                  }`}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </section>
@@ -223,3 +270,4 @@ const ServicesSection = () => {
 };
 
 export default ServicesSection;
+

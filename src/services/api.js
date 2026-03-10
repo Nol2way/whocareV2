@@ -230,6 +230,16 @@ export const apiGetPublicServices = async (params = {}) => {
   return response.json();
 };
 
+export const apiGetServiceCategories = async () => {
+  const response = await fetch(`${API_BASE}/services/categories`);
+  return response.json();
+};
+
+export const apiGetBranches = async () => {
+  const response = await fetch(`${API_BASE}/services/branches`);
+  return response.json();
+};
+
 export const apiGetAdminServices = async (params = {}) => {
   const query = new URLSearchParams(params).toString();
   const response = await apiFetch(`/services/admin?${query}`);
