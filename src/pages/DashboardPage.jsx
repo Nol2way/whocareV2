@@ -6,7 +6,7 @@ import { apiGetDashboard } from '../services/api';
 
 const DashboardPage = () => {
   const navigate = useNavigate();
-  const { user, loading: authLoading, getDisplayName, getUserRole, getRoleConfig, hasRole, isAdmin } = useAuth();
+  const { user, loading: authLoading, getDisplayName, getUserRole, getRoleConfig, isAdmin } = useAuth();
   const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -50,7 +50,7 @@ const DashboardPage = () => {
     );
   }
 
-  // Build menu items based on role
+  // Build menu items based on role (use exact role match to prevent duplicates)
   const getMenuItems = () => {
     const items = [];
 
@@ -63,172 +63,61 @@ const DashboardPage = () => {
       color: 'blue',
     });
 
-    if (hasRole('super_admin', 'manager')) {
-      items.push({
-        icon: 'mdi:medical-bag',
-        label: 'จัดการบริการ',
-        desc: 'เพิ่ม / แก้ไข / ลบ บริการทั้งหมด',
-        to: '/admin/services',
-        color: 'green',
-      });
-    }
-
-    if (hasRole('super_admin')) {
+    // === super_admin: sees all management items ONCE ===
+    if (role === 'super_admin') {
       items.push(
-        {
-          icon: 'mdi:account-group',
-          label: 'จัดการผู้ใช้',
-          desc: 'สร้าง / แก้ไข / ลบ / กำหนด Role',
-          to: '/admin/users',
-          color: 'red',
-        },
-        {
-          icon: 'mdi:shield-check',
-          label: 'จัดการสิทธิ์',
-          desc: 'Permission Matrix',
-          to: '/admin/permissions',
-          color: 'amber',
-        },
-        {
-          icon: 'mdi:file-document-outline',
-          label: 'Audit Log',
-          desc: 'ประวัติการใช้งานระบบ',
-          to: '/admin/audit-logs',
-          color: 'purple',
-        },
+        { icon: 'mdi:medical-bag', label: 'จัดการบริการ', desc: 'เพิ่ม / แก้ไข / ลบ บริการทั้งหมด', to: '/admin/services', color: 'green' },
+        { icon: 'mdi:calendar-clock', label: 'จัดการนัดหมาย', desc: 'ภาพรวมนัดหมายทั้งหมด', to: '/admin/appointments', color: 'blue' },
+        { icon: 'mdi:account-group', label: 'จัดการผู้ใช้', desc: 'สร้าง / แก้ไข / ลบ / กำหนด Role', to: '/admin/users', color: 'red' },
+        { icon: 'mdi:finance', label: 'จัดการการเงิน', desc: 'ภาพรวมการเงิน / คืนเงิน', to: '/admin/finance', color: 'indigo' },
+        { icon: 'mdi:shield-check', label: 'จัดการสิทธิ์', desc: 'Permission Matrix', to: '/admin/permissions', color: 'amber' },
+        { icon: 'mdi:file-document-outline', label: 'Audit Log', desc: 'ประวัติการใช้งานระบบ', to: '/admin/audit-logs', color: 'purple' },
       );
     }
 
-    if (hasRole('manager')) {
-      items.push({
-        icon: 'mdi:chart-bar',
-        label: 'รายงานภาพรวม',
-        desc: 'Dashboard สถิติและรายงาน',
-        to: '/admin/users',
-        color: 'indigo',
-      });
-    }
-
-    if (hasRole('doctor')) {
+    // === manager ===
+    if (role === 'manager') {
       items.push(
-        {
-          icon: 'mdi:clipboard-text',
-          label: 'เวชระเบียน',
-          desc: 'ดูข้อมูลคนไข้ในความดูแล',
-          to: '#',
-          color: 'blue',
-        },
-        {
-          icon: 'mdi:pill',
-          label: 'สั่งยา',
-          desc: 'สั่งยา / สั่งตรวจแล็บ',
-          to: '#',
-          color: 'green',
-        },
-        {
-          icon: 'mdi:calendar-check',
-          label: 'ตารางนัด',
-          desc: 'ดูตารางนัดของตัวเอง',
-          to: '#',
-          color: 'purple',
-        },
+        { icon: 'mdi:medical-bag', label: 'จัดการบริการ', desc: 'เพิ่ม / แก้ไข / ลบ บริการทั้งหมด', to: '/admin/services', color: 'green' },
+        { icon: 'mdi:calendar-clock', label: 'จัดการนัดหมาย', desc: 'ภาพรวมนัดหมายทั้งหมด', to: '/admin/appointments', color: 'blue' },
+        { icon: 'mdi:account-group', label: 'จัดการผู้ใช้', desc: 'สร้าง / แก้ไข / ลบ / กำหนด Role', to: '/admin/users', color: 'red' },
+        { icon: 'mdi:finance', label: 'จัดการการเงิน', desc: 'ภาพรวมการเงิน / คืนเงิน', to: '/admin/finance', color: 'indigo' },
       );
     }
 
-    if (hasRole('nurse')) {
+    // === doctor ===
+    if (role === 'doctor') {
       items.push(
-        {
-          icon: 'mdi:heart-pulse',
-          label: 'Vital Signs',
-          desc: 'บันทึกสัญญาณชีพ',
-          to: '#',
-          color: 'red',
-        },
-        {
-          icon: 'mdi:account-clock',
-          label: 'สถานะคนไข้',
-          desc: 'อัปเดตสถานะรอพบแพทย์',
-          to: '#',
-          color: 'amber',
-        },
+        { icon: 'mdi:calendar-check', label: 'ตารางนัด', desc: 'ดูตารางนัดของตัวเอง', to: '/admin/appointments', color: 'purple' },
       );
     }
 
-    if (hasRole('reception')) {
+    // === nurse ===
+    if (role === 'nurse') {
       items.push(
-        {
-          icon: 'mdi:account-plus',
-          label: 'ลงทะเบียนผู้ป่วย',
-          desc: 'ลงทะเบียนผู้ป่วยใหม่',
-          to: '#',
-          color: 'green',
-        },
-        {
-          icon: 'mdi:calendar-edit',
-          label: 'จัดการนัดหมาย',
-          desc: 'สร้าง / เลื่อน / ยกเลิก',
-          to: '#',
-          color: 'blue',
-        },
-        {
-          icon: 'mdi:ticket',
-          label: 'บัตรคิว',
-          desc: 'พิมพ์บัตรคิว',
-          to: '#',
-          color: 'purple',
-        },
+        { icon: 'mdi:calendar-clock', label: 'จัดการนัดหมาย', desc: 'ดูนัดหมายทั้งหมด', to: '/admin/appointments', color: 'blue' },
       );
     }
 
-    if (hasRole('accountant')) {
+    // === reception ===
+    if (role === 'reception') {
       items.push(
-        {
-          icon: 'mdi:receipt-text',
-          label: 'ออกใบเสร็จ',
-          desc: 'ออกใบเสร็จรับเงิน',
-          to: '#',
-          color: 'green',
-        },
-        {
-          icon: 'mdi:cash-register',
-          label: 'การชำระเงิน',
-          desc: 'จัดการสถานะการชำระ',
-          to: '#',
-          color: 'blue',
-        },
-        {
-          icon: 'mdi:file-chart',
-          label: 'รายงานการเงิน',
-          desc: 'รายรับ/รายจ่าย (Export)',
-          to: '#',
-          color: 'amber',
-        },
+        { icon: 'mdi:calendar-edit', label: 'จัดการนัดหมาย', desc: 'สร้าง / เลื่อน / ยกเลิก', to: '/admin/appointments', color: 'blue' },
+        { icon: 'mdi:finance', label: 'จัดการการเงิน', desc: 'อนุมัติคืนเงิน', to: '/admin/finance', color: 'indigo' },
       );
     }
 
+    // === accountant ===
+    if (role === 'accountant') {
+      items.push(
+        { icon: 'mdi:finance', label: 'จัดการการเงิน', desc: 'ภาพรวมการเงิน / คืนเงิน', to: '/admin/finance', color: 'indigo' },
+      );
+    }
+
+    // === patient ===
     if (role === 'patient') {
       items.push(
-        {
-          icon: 'mdi:history',
-          label: 'ประวัติการรักษา',
-          desc: 'ดูบันทึกการรักษาของคุณ',
-          to: '#',
-          color: 'green',
-        },
-        {
-          icon: 'mdi:receipt',
-          label: 'ใบเสร็จ',
-          desc: 'ดูใบเสร็จรับเงิน',
-          to: '#',
-          color: 'amber',
-        },
-        {
-          icon: 'mdi:calendar-plus',
-          label: 'จองคิวออนไลน์',
-          desc: 'นัดหมายพบแพทย์',
-          to: '#',
-          color: 'purple',
-        },
+        { icon: 'mdi:calendar-check', label: 'การจองของฉัน', desc: 'ดูนัดหมาย / เลื่อน / คืนเงิน', to: '/my-bookings', color: 'sky' },
       );
     }
 
@@ -243,6 +132,7 @@ const DashboardPage = () => {
     amber: { bg: 'bg-amber-500/10 dark:bg-amber-500/20', text: 'text-amber-500', hover: 'hover:border-amber-500/40' },
     indigo: { bg: 'bg-indigo-500/10 dark:bg-indigo-500/20', text: 'text-indigo-500', hover: 'hover:border-indigo-500/40' },
     sky: { bg: 'bg-sky-500/10 dark:bg-sky-500/20', text: 'text-sky-500', hover: 'hover:border-sky-500/40' },
+    pink: { bg: 'bg-pink-500/10 dark:bg-pink-500/20', text: 'text-pink-500', hover: 'hover:border-pink-500/40' },
   };
 
   const menuItems = getMenuItems();

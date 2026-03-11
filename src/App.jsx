@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -10,15 +10,29 @@ import ServicesSection from './components/ServicesSection';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
-import ProfilePage from './pages/ProfilePage';
-import DashboardPage from './pages/DashboardPage';
-import AdminUsersPage from './pages/AdminUsersPage';
-import AuditLogsPage from './pages/AuditLogsPage';
-import PermissionsPage from './pages/PermissionsPage';
-import ManageServicesPage from './pages/ManageServicesPage';
 import ProtectedRoute from './components/ProtectedRoute';
+import { Icon } from '@iconify/react';
+
+// Lazy-load pages for code splitting & faster initial load
+const LoginPage = lazy(() => import('./pages/LoginPage'));
+const RegisterPage = lazy(() => import('./pages/RegisterPage'));
+const ProfilePage = lazy(() => import('./pages/ProfilePage'));
+const DashboardPage = lazy(() => import('./pages/DashboardPage'));
+const AdminUsersPage = lazy(() => import('./pages/AdminUsersPage'));
+const AuditLogsPage = lazy(() => import('./pages/AuditLogsPage'));
+const PermissionsPage = lazy(() => import('./pages/PermissionsPage'));
+const ManageServicesPage = lazy(() => import('./pages/ManageServicesPage'));
+const ServiceDetailPage = lazy(() => import('./pages/ServiceDetailPage'));
+const BookingPage = lazy(() => import('./pages/BookingPage'));
+const AppointmentManagementPage = lazy(() => import('./pages/AppointmentManagementPage'));
+const MyBookingsPage = lazy(() => import('./pages/MyBookingsPage'));
+const FinanceDashboardPage = lazy(() => import('./pages/FinanceDashboardPage'));
+
+const PageLoader = () => (
+  <div className="min-h-screen flex items-center justify-center bg-section dark:bg-darkmode">
+    <Icon icon="mdi:loading" width="36" className="text-primary animate-spin" />
+  </div>
+);
 
 function HomePage() {
   return (
@@ -44,8 +58,11 @@ function App() {
   return (
     <>
       <Header />
-      <Routes>
+      <Suspense fallback={<PageLoader />}>
+        <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/services/:id" element={<ServiceDetailPage />} />
+        <Route path="/booking/:id" element={<BookingPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/profile" element={<ProfilePage />} />
@@ -89,7 +106,32 @@ function App() {
             </ProtectedRoute>
           }
         />
-      </Routes>
+        <Route
+          path="/admin/appointments"
+          element={
+            <ProtectedRoute roles={['reception', 'nurse', 'manager', 'doctor', 'super_admin']}>
+              <AppointmentManagementPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/my-bookings"
+          element={
+            <ProtectedRoute>
+              <MyBookingsPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/finance"
+          element={
+            <ProtectedRoute roles={['accountant', 'reception', 'manager', 'super_admin']}>
+              <FinanceDashboardPage />
+            </ProtectedRoute>
+          }
+        />
+        </Routes>
+      </Suspense>
       <ScrollToTop />
     </>
   );

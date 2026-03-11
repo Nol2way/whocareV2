@@ -5,6 +5,7 @@ import { menuItems } from '../data/data';
 import { Icon } from '@iconify/react';
 import HospitalModal from './HospitalModal';
 import { useAuth, ROLE_CONFIG } from '../context/AuthContext';
+import { apiGetBalance, apiDeposit, apiWithdraw } from '../services/api';
 
 const Header = () => {
   const location = useLocation();
@@ -17,8 +18,15 @@ const Header = () => {
   const [hospitalModalOpen, setHospitalModalOpen] = useState(false);
   const [mobileDropdown, setMobileDropdown] = useState(null);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [walletOpen, setWalletOpen] = useState(false);
+  const [walletTab, setWalletTab] = useState('deposit'); // 'deposit' | 'withdraw'
+  const [balance, setBalance] = useState(null);
+  const [walletLoading, setWalletLoading] = useState(false);
+  const [depositAmount, setDepositAmount] = useState('');
+  const [withdrawForm, setWithdrawForm] = useState({ amount: '', bank_name: '', account_name: '', account_number: '' });
   const dropdownRef = useRef(null);
   const userMenuRef = useRef(null);
+  const walletRef = useRef(null);
   const hoverTimeout = useRef(null);
 
   useEffect(() => {
@@ -45,10 +53,86 @@ const Header = () => {
       if (userMenuRef.current && !userMenuRef.current.contains(e.target)) {
         setUserMenuOpen(false);
       }
+      if (walletRef.current && !walletRef.current.contains(e.target)) {
+        setWalletOpen(false);
+      }
     };
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
+
+  // Fetch balance for logged-in users
+  const fetchBalance = async () => {
+    try {
+      const res = await apiGetBalance();
+      if (res.success) setBalance(res.data.balance);
+    } catch { /* ignore */ }
+  };
+
+  useEffect(() => {
+    if (user) {
+      fetchBalance();
+      const interval = setInterval(fetchBalance, 30000);
+      return () => clearInterval(interval);
+    } else {
+      setBalance(null);
+    }
+  }, [user]);
+
+  const handleDeposit = async () => {
+    const amount = parseFloat(depositAmount);
+    if (!amount || amount <= 0) {
+      Swal.fire({ icon: 'warning', title: 'กรุณากรอกจำนวนเงิน', confirmButtonColor: '#3b82f6' });
+      return;
+    }
+    setWalletLoading(true);
+    try {
+      const res = await apiDeposit(amount);
+      if (res.success) {
+        setBalance(res.data.balance);
+        setDepositAmount('');
+        Swal.fire({ icon: 'success', title: 'เติมเงินสำเร็จ', text: res.message, timer: 2000, showConfirmButton: false });
+      } else {
+        Swal.fire({ icon: 'error', title: 'ผิดพลาด', text: res.message, confirmButtonColor: '#3b82f6' });
+      }
+    } catch {
+      Swal.fire({ icon: 'error', title: 'เกิดข้อผิดพลาด', confirmButtonColor: '#3b82f6' });
+    } finally {
+      setWalletLoading(false);
+    }
+  };
+
+  const handleWithdraw = async () => {
+    const amount = parseFloat(withdrawForm.amount);
+    if (!amount || amount <= 0) {
+      Swal.fire({ icon: 'warning', title: 'กรุณากรอกจำนวนเงิน', confirmButtonColor: '#3b82f6' });
+      return;
+    }
+    if (!withdrawForm.bank_name || !withdrawForm.account_name || !withdrawForm.account_number) {
+      Swal.fire({ icon: 'warning', title: 'กรุณากรอกข้อมูลธนาคารให้ครบ', confirmButtonColor: '#3b82f6' });
+      return;
+    }
+    setWalletLoading(true);
+    try {
+      const res = await apiWithdraw(withdrawForm);
+      if (res.success) {
+        setBalance(res.data.balance);
+        setWithdrawForm({ amount: '', bank_name: '', account_name: '', account_number: '' });
+        Swal.fire({ icon: 'success', title: 'ถอนเงินสำเร็จ', text: res.message, timer: 2000, showConfirmButton: false });
+      } else {
+        Swal.fire({ icon: 'error', title: 'ผิดพลาด', text: res.message, confirmButtonColor: '#3b82f6' });
+      }
+    } catch {
+      Swal.fire({ icon: 'error', title: 'เกิดข้อผิดพลาด', confirmButtonColor: '#3b82f6' });
+    } finally {
+      setWalletLoading(false);
+    }
+  };
+
+  const formatBalance = (val) => {
+    if (val === null || val === undefined) return '...';
+    return parseFloat(val).toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  };
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
@@ -72,13 +156,13 @@ const Header = () => {
             : 'shadow-none bg-white/80 dark:bg-transparent'
         }`}
       >
-        <div className="container mx-auto max-w-6xl flex items-center justify-between p-6">
+        <div className="container mx-auto max-w-6xl flex items-center justify-between px-6 h-full">
           {/* Logo */}
-          <a href="/" className="flex items-center">
+          <a href="/" className="flex items-center h-full">
             <img
-              src="/images/logo/logo.svg"
+              src="/images/logo/logo_whocare.svg"
               alt="Whocare Hospital"
-              className="h-10 w-auto"
+              style={{ height: '90px', width: 'auto' }}
             />
           </a>
 
@@ -228,7 +312,92 @@ const Header = () => {
 
             {/* เข้าสู่ระบบ / สมัครสมาชิก / User menu */}
             {user ? (
-              <div className="hidden lg:block relative" ref={userMenuRef}>
+              <>
+                {/* Wallet balance button */}
+                <div className="hidden lg:block relative" ref={walletRef}>
+                  <button
+                    onClick={() => { setWalletOpen(!walletOpen); setUserMenuOpen(false); }}
+                    className="flex items-center gap-1.5 bg-green-50 dark:bg-green-500/10 text-green-600 dark:text-green-400 px-3 py-2 rounded-lg hover:bg-green-100 dark:hover:bg-green-500/20 transition-colors cursor-pointer border border-green-200 dark:border-green-500/30"
+                  >
+                    <Icon icon="mdi:wallet" width="18" />
+                    <span className="font-semibold text-sm">฿{formatBalance(balance)}</span>
+                  </button>
+
+                  {/* Wallet dropdown */}
+                  <div className={`absolute right-0 top-full mt-2 w-80 bg-white dark:bg-darkmode rounded-xl shadow-xl border border-border dark:border-dark_border overflow-hidden transition-all duration-200 z-50 ${walletOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-2 invisible'}`}>
+                    {/* Balance header */}
+                    <div className="bg-linear-to-r from-blue-500 to-indigo-500 px-4 py-4 text-white">
+                      <p className="text-xs opacity-80">ยอดเงินคงเหลือ</p>
+                      <p className="text-2xl font-bold mt-0.5">฿{formatBalance(balance)}</p>
+                    </div>
+                    {/* Tabs */}
+                    <div className="flex border-b border-border dark:border-dark_border">
+                      <button onClick={() => setWalletTab('deposit')} className={`flex-1 py-2.5 text-sm font-medium transition-colors cursor-pointer ${walletTab === 'deposit' ? 'text-primary border-b-2 border-primary' : 'text-grey hover:text-primary'}`}>
+                        <Icon icon="mdi:cash-plus" width="16" className="inline mr-1" />ฝากเงิน
+                      </button>
+                      <button onClick={() => setWalletTab('withdraw')} className={`flex-1 py-2.5 text-sm font-medium transition-colors cursor-pointer ${walletTab === 'withdraw' ? 'text-primary border-b-2 border-primary' : 'text-grey hover:text-primary'}`}>
+                        <Icon icon="mdi:cash-minus" width="16" className="inline mr-1" />ถอนเงิน
+                      </button>
+                    </div>
+                    {/* Content */}
+                    <div className="p-4">
+                      {walletTab === 'deposit' ? (
+                        <div className="space-y-3">
+                          <div className="flex items-center gap-2 p-3 bg-blue-50 dark:bg-blue-500/10 rounded-lg text-xs text-blue-600 dark:text-blue-400">
+                            <Icon icon="mdi:qrcode" width="20" />
+                            <span>ชำระผ่าน PromptPay</span>
+                          </div>
+                          <div>
+                            <label className="text-xs text-grey dark:text-white/50 mb-1 block">จำนวนเงิน (บาท)</label>
+                            <input type="number" min="1" max="1000000" value={depositAmount} onChange={(e) => setDepositAmount(e.target.value)} placeholder="0.00" className="w-full px-3 py-2.5 rounded-lg border border-border dark:border-dark_border bg-section dark:bg-darklight text-midnight_text dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary/30" />
+                          </div>
+                          <div className="flex gap-2">
+                            {[100, 500, 1000, 5000].map(amt => (
+                              <button key={amt} onClick={() => setDepositAmount(String(amt))} className="flex-1 py-1.5 text-xs font-medium rounded-lg border border-border dark:border-dark_border hover:border-primary hover:text-primary transition-colors cursor-pointer bg-white dark:bg-darklight text-midnight_text dark:text-white">฿{amt.toLocaleString()}</button>
+                            ))}
+                          </div>
+                          <button onClick={handleDeposit} disabled={walletLoading} className="w-full py-2.5 bg-primary text-white rounded-lg hover:bg-blue-700 transition-colors cursor-pointer text-sm font-medium disabled:opacity-50">
+                            {walletLoading ? 'กำลังดำเนินการ...' : 'เติมเงิน'}
+                          </button>
+                        </div>
+                      ) : (
+                        <div className="space-y-3">
+                          <div>
+                            <label className="text-xs text-grey dark:text-white/50 mb-1 block">จำนวนเงิน (บาท)</label>
+                            <input type="number" min="1" value={withdrawForm.amount} onChange={(e) => setWithdrawForm(p => ({ ...p, amount: e.target.value }))} placeholder="0.00" className="w-full px-3 py-2.5 rounded-lg border border-border dark:border-dark_border bg-section dark:bg-darklight text-midnight_text dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary/30" />
+                          </div>
+                          <div>
+                            <label className="text-xs text-grey dark:text-white/50 mb-1 block">ธนาคาร</label>
+                            <select value={withdrawForm.bank_name} onChange={(e) => setWithdrawForm(p => ({ ...p, bank_name: e.target.value }))} className="w-full px-3 py-2.5 rounded-lg border border-border dark:border-dark_border bg-section dark:bg-darklight text-midnight_text dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 cursor-pointer">
+                              <option value="">เลือกธนาคาร</option>
+                              <option value="กสิกรไทย">กสิกรไทย (KBANK)</option>
+                              <option value="ไทยพาณิชย์">ไทยพาณิชย์ (SCB)</option>
+                              <option value="กรุงเทพ">กรุงเทพ (BBL)</option>
+                              <option value="กรุงไทย">กรุงไทย (KTB)</option>
+                              <option value="กรุงศรี">กรุงศรี (BAY)</option>
+                              <option value="ทหารไทยธนชาต">ทหารไทยธนชาต (TTB)</option>
+                              <option value="ออมสิน">ออมสิน (GSB)</option>
+                            </select>
+                          </div>
+                          <div>
+                            <label className="text-xs text-grey dark:text-white/50 mb-1 block">ชื่อ-นามสกุลผู้รับ</label>
+                            <input type="text" value={withdrawForm.account_name} onChange={(e) => setWithdrawForm(p => ({ ...p, account_name: e.target.value }))} placeholder="ชื่อ นามสกุล" className="w-full px-3 py-2.5 rounded-lg border border-border dark:border-dark_border bg-section dark:bg-darklight text-midnight_text dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary/30" />
+                          </div>
+                          <div>
+                            <label className="text-xs text-grey dark:text-white/50 mb-1 block">เลขบัญชี</label>
+                            <input type="text" value={withdrawForm.account_number} onChange={(e) => setWithdrawForm(p => ({ ...p, account_number: e.target.value.replace(/\D/g, '') }))} placeholder="xxx-x-xxxxx-x" className="w-full px-3 py-2.5 rounded-lg border border-border dark:border-dark_border bg-section dark:bg-darklight text-midnight_text dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary/30" />
+                          </div>
+                          <button onClick={handleWithdraw} disabled={walletLoading} className="w-full py-2.5 bg-primary text-white rounded-lg hover:bg-blue-700 transition-colors cursor-pointer text-sm font-medium disabled:opacity-50">
+                            {walletLoading ? 'กำลังดำเนินการ...' : 'ถอนเงิน'}
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {/* User menu */}
+                <div className="hidden lg:block relative" ref={userMenuRef}>
                 <button
                   onClick={() => setUserMenuOpen(!userMenuOpen)}
                   className="flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-lg hover:bg-primary/20 transition-colors cursor-pointer"
@@ -273,24 +442,6 @@ const Header = () => {
                       <Icon icon="mdi:view-dashboard" width="18" />
                       แดชบอร์ด
                     </Link>
-                    <Link
-                      to="/profile"
-                      onClick={() => setUserMenuOpen(false)}
-                      className="w-full flex items-center gap-2 px-4 py-2.5 text-sm text-midnight_text dark:text-white hover:bg-primary/5 dark:hover:bg-primary/10 transition-colors"
-                    >
-                      <Icon icon="mdi:account-edit" width="18" />
-                      แก้ไขโปรไฟล์
-                    </Link>
-                    {isAdmin() && (
-                      <Link
-                        to="/admin/users"
-                        onClick={() => setUserMenuOpen(false)}
-                        className="w-full flex items-center gap-2 px-4 py-2.5 text-sm text-midnight_text dark:text-white hover:bg-primary/5 dark:hover:bg-primary/10 transition-colors"
-                      >
-                        <Icon icon="mdi:account-group" width="18" />
-                        จัดการผู้ใช้
-                      </Link>
-                    )}
                     <button
                       onClick={async () => {
                         setUserMenuOpen(false);
@@ -325,6 +476,7 @@ const Header = () => {
                   </div>
                 </div>
               </div>
+              </>
             ) : (
               <>
                 <Link
@@ -484,6 +636,11 @@ const Header = () => {
                       )}
                     </div>
                   </div>
+                  {/* Mobile balance */}
+                  <div className="flex items-center gap-2 px-4 py-2.5 bg-green-50 dark:bg-green-500/10 rounded-lg border border-green-200 dark:border-green-500/30">
+                    <Icon icon="mdi:wallet" width="20" className="text-green-600 dark:text-green-400" />
+                    <span className="text-sm font-semibold text-green-600 dark:text-green-400">฿{formatBalance(balance)}</span>
+                  </div>
                   <Link
                     to="/dashboard"
                     onClick={() => setNavbarOpen(false)}
@@ -492,24 +649,6 @@ const Header = () => {
                     <Icon icon="mdi:view-dashboard" width="18" />
                     แดชบอร์ด
                   </Link>
-                  <Link
-                    to="/profile"
-                    onClick={() => setNavbarOpen(false)}
-                    className="flex items-center justify-center gap-2 bg-primary/5 text-primary px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors"
-                  >
-                    <Icon icon="mdi:account-edit" width="18" />
-                    แก้ไขโปรไฟล์
-                  </Link>
-                  {isAdmin() && (
-                    <Link
-                      to="/admin/users"
-                      onClick={() => setNavbarOpen(false)}
-                      className="flex items-center justify-center gap-2 bg-primary/5 text-primary px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors"
-                    >
-                      <Icon icon="mdi:account-group" width="18" />
-                      จัดการผู้ใช้
-                    </Link>
-                  )}
                   <button
                     onClick={async () => {
                       setNavbarOpen(false);

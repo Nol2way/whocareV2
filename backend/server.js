@@ -7,6 +7,8 @@ import { testConnection } from './database/db.js';
 import authRoutes from './routes/auth.js';
 import adminRoutes from './routes/admin.js';
 import servicesRoutes from './routes/services.js';
+import bookingsRoutes from './routes/bookings.js';
+import financeRoutes from './routes/finance.js';
 import authMiddleware from './middleware/auth.js';
 import pool from './database/db.js';
 
@@ -54,6 +56,8 @@ app.use(express.json({ limit: '10kb' }));
 app.use('/api/auth', authRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/services', servicesRoutes);
+app.use('/api/bookings', bookingsRoutes);
+app.use('/api/finance', financeRoutes);
 
 // Protected route example: get current user profile
 app.get('/api/user/profile', authMiddleware, async (req, res) => {

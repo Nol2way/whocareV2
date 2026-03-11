@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { apiLogin } from '../services/api';
 import { useAuth } from '../context/AuthContext';
 
 const LoginPage = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const redirectTo = searchParams.get('redirect') || '/';
   const { login } = useAuth();
   const [userType, setUserType] = useState('thai');
   const [loading, setLoading] = useState(false);
@@ -63,7 +65,7 @@ const LoginPage = () => {
           timer: 2000,
           timerProgressBar: true,
         });
-        navigate('/');
+        navigate(redirectTo);
       } else {
         Swal.fire({
           title: isThai ? 'เข้าสู่ระบบไม่สำเร็จ' : 'Login Failed',

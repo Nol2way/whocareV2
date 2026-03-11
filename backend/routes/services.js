@@ -89,6 +89,26 @@ router.get('/admin', requireRole('super_admin', 'manager'), async (req, res) => 
 });
 
 // ============================================================
+// GET /api/services/:id — Public: Get single service by id
+// ============================================================
+router.get('/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const [rows] = await pool.query(
+      'SELECT * FROM services WHERE id = $1 AND is_active = TRUE',
+      [id]
+    );
+    if (rows.length === 0) {
+      return res.status(404).json({ success: false, message: 'ไม่พบบริการนี้' });
+    }
+    res.json({ success: true, data: rows[0] });
+  } catch (error) {
+    console.error('Get service by id error:', error);
+    res.status(500).json({ success: false, message: 'เกิดข้อผิดพลาดในระบบ' });
+  }
+});
+
+// ============================================================
 // POST /api/services — Admin: Create service
 // ============================================================
 router.post('/', requireRole('super_admin', 'manager'), async (req, res) => {

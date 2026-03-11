@@ -234,18 +234,18 @@ const ManageServicesPage = () => {
         {/* Table */}
         <div className="bg-white dark:bg-darklight rounded-2xl shadow-deatail_shadow border border-border dark:border-dark_border overflow-hidden">
           <div className="overflow-x-auto">
-            <table className="w-full text-sm">
+            <table className="w-full text-sm table-fixed">
               <thead>
                 <tr className="bg-section dark:bg-darkmode border-b border-border dark:border-dark_border">
-                  <th className="text-left px-4 py-3 font-semibold text-midnight_text dark:text-white">รูป</th>
-                  <th className="text-left px-4 py-3 font-semibold text-midnight_text dark:text-white">ชื่อบริการ</th>
-                  <th className="text-left px-4 py-3 font-semibold text-midnight_text dark:text-white hidden md:table-cell">หมวดหมู่</th>
-                  <th className="text-left px-4 py-3 font-semibold text-midnight_text dark:text-white hidden sm:table-cell">สาขา</th>
-                  <th className="text-right px-4 py-3 font-semibold text-midnight_text dark:text-white">ราคา</th>
-                  <th className="text-center px-4 py-3 font-semibold text-midnight_text dark:text-white hidden lg:table-cell">แนะนำ</th>
-                  <th className="text-center px-4 py-3 font-semibold text-midnight_text dark:text-white hidden lg:table-cell">โปรโมชั่น</th>
-                  <th className="text-center px-4 py-3 font-semibold text-midnight_text dark:text-white">สถานะ</th>
-                  <th className="text-center px-4 py-3 font-semibold text-midnight_text dark:text-white">จัดการ</th>
+                  <th className="text-left pl-4 pr-2 py-3 font-semibold text-midnight_text dark:text-white w-[52px]">รูป</th>
+                  <th className="text-left px-2 py-3 font-semibold text-midnight_text dark:text-white w-[30%]">ชื่อบริการ</th>
+                  <th className="text-center px-2 py-3 font-semibold text-midnight_text dark:text-white w-[80px] hidden md:table-cell">หมวดหมู่</th>
+                  <th className="text-center px-2 py-3 font-semibold text-midnight_text dark:text-white w-[100px] hidden sm:table-cell">สาขา</th>
+                  <th className="text-right px-2 py-3 font-semibold text-midnight_text dark:text-white w-[130px]">ราคา</th>
+                  <th className="text-center px-1 py-3 font-semibold text-midnight_text dark:text-white w-[50px] hidden lg:table-cell">แนะนำ</th>
+                  <th className="text-center px-1 py-3 font-semibold text-midnight_text dark:text-white w-[50px] hidden lg:table-cell">โปร</th>
+                  <th className="text-center px-2 py-3 font-semibold text-midnight_text dark:text-white w-[70px]">สถานะ</th>
+                  <th className="text-center pr-4 pl-2 py-3 font-semibold text-midnight_text dark:text-white w-[80px]">จัดการ</th>
                 </tr>
               </thead>
               <tbody>
@@ -259,75 +259,71 @@ const ManageServicesPage = () => {
                 ) : (
                   services.map((s) => (
                     <tr key={s.id} className="border-b border-border dark:border-dark_border hover:bg-section/50 dark:hover:bg-darkmode/50 transition-colors">
-                      <td className="px-4 py-3">
+                      <td className="pl-4 pr-2 py-2.5">
                         {s.image_url ? (
-                          <img src={s.image_url} alt={s.name} className="w-14 h-14 object-cover rounded-lg" />
+                          <img src={s.image_url} alt={s.name} className="w-10 h-10 object-cover rounded-lg" />
                         ) : (
-                          <div className="w-14 h-14 bg-section dark:bg-darkmode rounded-lg flex items-center justify-center">
-                            <Icon icon="mdi:image-off" width="20" className="text-grey/40" />
+                          <div className="w-10 h-10 bg-section dark:bg-darkmode rounded-lg flex items-center justify-center">
+                            <Icon icon="mdi:image-off" width="16" className="text-grey/40" />
                           </div>
                         )}
                       </td>
-                      <td className="px-4 py-3">
-                        <p className="font-semibold text-midnight_text dark:text-white">{s.name}</p>
+                      <td className="px-2 py-2.5">
+                        <p className="font-semibold text-midnight_text dark:text-white truncate">{s.name}</p>
                         {s.description && (
-                          <p className="text-xs text-grey dark:text-white/40 mt-0.5 line-clamp-1">{s.description}</p>
+                          <p className="text-xs text-grey dark:text-white/40 mt-0.5 truncate">{s.description}</p>
                         )}
                       </td>
-                      <td className="px-4 py-3 hidden md:table-cell">
-                        <span className="inline-block px-2.5 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">
+                      <td className="px-2 py-2.5 hidden md:table-cell text-center">
+                        <span className="inline-block px-2 py-0.5 rounded-full text-[11px] font-medium bg-primary/10 text-primary whitespace-nowrap">
                           {CATEGORIES.find((c) => c.value === s.category)?.label || s.category}
                         </span>
                       </td>
-                      <td className="px-4 py-3 text-grey dark:text-white/60 hidden sm:table-cell">{s.branch || '-'}</td>
-                      <td className="px-4 py-3 text-right">
-                        {s.original_price > 0 && s.original_price > s.price && (
-                          <span className="text-xs text-grey line-through mr-1">{formatPrice(s.original_price)}</span>
-                        )}
-                        <span className="font-bold text-primary">{formatPrice(s.price)} ฿</span>
+                      <td className="px-2 py-2.5 text-center hidden sm:table-cell">
+                        <span className="text-xs text-grey dark:text-white/60 truncate block">{s.branch || '-'}</span>
                       </td>
-                      <td className="px-4 py-3 text-center hidden lg:table-cell">
-                        {s.is_recommended ? (
-                          <Icon icon="mdi:check-circle" width="20" className="text-green-500 mx-auto" />
-                        ) : (
-                          <Icon icon="mdi:close-circle" width="20" className="text-grey/30 mx-auto" />
-                        )}
+                      <td className="px-2 py-2.5 text-right">
+                        <div className="flex flex-col items-end gap-0.5">
+                          {parseFloat(s.original_price) > 0 && parseFloat(s.original_price) > parseFloat(s.price) && (
+                            <span className="text-[11px] text-grey line-through">{formatPrice(s.original_price)}</span>
+                          )}
+                          <span className="font-bold text-primary text-sm">{formatPrice(s.price)} ฿</span>
+                        </div>
                       </td>
-                      <td className="px-4 py-3 text-center hidden lg:table-cell">
-                        {s.is_promotion ? (
-                          <Icon icon="mdi:tag-check" width="20" className="text-amber-500 mx-auto" />
-                        ) : (
-                          <Icon icon="mdi:tag-off" width="20" className="text-grey/30 mx-auto" />
-                        )}
+                      <td className="px-1 py-2.5 text-center hidden lg:table-cell">
+                        <Icon icon={s.is_recommended ? 'mdi:check-circle' : 'mdi:close-circle'} width="18" className={s.is_recommended ? 'text-green-500 mx-auto' : 'text-grey/30 mx-auto'} />
                       </td>
-                      <td className="px-4 py-3 text-center">
+                      <td className="px-1 py-2.5 text-center hidden lg:table-cell">
+                        <Icon icon={s.is_promotion ? 'mdi:tag-check' : 'mdi:tag-off'} width="18" className={s.is_promotion ? 'text-amber-500 mx-auto' : 'text-grey/30 mx-auto'} />
+                      </td>
+                      <td className="px-2 py-2.5 text-center">
                         <button
                           onClick={() => handleToggleActive(s)}
-                          className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold cursor-pointer transition-colors ${
+                          className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold cursor-pointer transition-colors ${
                             s.is_active
                               ? 'bg-green-500/10 text-green-600 hover:bg-green-500/20'
                               : 'bg-red-500/10 text-red-500 hover:bg-red-500/20'
                           }`}
                         >
-                          <Icon icon={s.is_active ? 'mdi:check-circle' : 'mdi:close-circle'} width="14" />
+                          <Icon icon={s.is_active ? 'mdi:check-circle' : 'mdi:close-circle'} width="12" />
                           {s.is_active ? 'เปิด' : 'ปิด'}
                         </button>
                       </td>
-                      <td className="px-4 py-3">
-                        <div className="flex items-center justify-center gap-1">
+                      <td className="pr-4 pl-2 py-2.5">
+                        <div className="flex items-center justify-center gap-0.5">
                           <button
                             onClick={() => openEdit(s)}
-                            className="p-2 rounded-lg hover:bg-primary/10 text-primary transition-colors cursor-pointer"
+                            className="p-1.5 rounded-lg hover:bg-primary/10 text-primary transition-colors cursor-pointer"
                             title="แก้ไข"
                           >
-                            <Icon icon="mdi:pencil" width="18" />
+                            <Icon icon="mdi:pencil" width="16" />
                           </button>
                           <button
                             onClick={() => handleDelete(s)}
-                            className="p-2 rounded-lg hover:bg-red-500/10 text-red-500 transition-colors cursor-pointer"
+                            className="p-1.5 rounded-lg hover:bg-red-500/10 text-red-500 transition-colors cursor-pointer"
                             title="ลบ"
                           >
-                            <Icon icon="mdi:delete" width="18" />
+                            <Icon icon="mdi:delete" width="16" />
                           </button>
                         </div>
                       </td>

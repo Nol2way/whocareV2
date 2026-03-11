@@ -230,6 +230,11 @@ export const apiGetPublicServices = async (params = {}) => {
   return response.json();
 };
 
+export const apiGetPublicServiceById = async (id) => {
+  const response = await fetch(`${API_BASE}/services/${id}`);
+  return response.json();
+};
+
 export const apiGetAdminServices = async (params = {}) => {
   const query = new URLSearchParams(params).toString();
   const response = await apiFetch(`/services/admin?${query}`);
@@ -256,5 +261,141 @@ export const apiDeleteService = async (id) => {
   const response = await apiFetch(`/services/${id}`, {
     method: 'DELETE',
   });
+  return response.json();
+};
+
+// ============================================================
+// Bookings API
+// ============================================================
+export const apiGetBookingSlots = async (serviceId, date) => {
+  const response = await apiFetch(`/bookings/slots?service_id=${serviceId}&date=${date}`);
+  return response.json();
+};
+
+export const apiLockSlot = async (data) => {
+  const response = await apiFetch('/bookings/lock', {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+  return response.json();
+};
+
+export const apiUnlockSlot = async (data) => {
+  const response = await apiFetch('/bookings/unlock', {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+  return response.json();
+};
+
+export const apiCreateBooking = async (data) => {
+  const response = await apiFetch('/bookings', {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+  return response.json();
+};
+
+export const apiGetMyBookings = async () => {
+  const response = await apiFetch('/bookings/my');
+  return response.json();
+};
+
+export const apiGetAllBookings = async (params = {}) => {
+  const query = new URLSearchParams(params).toString();
+  const response = await apiFetch(`/bookings/all?${query}`);
+  return response.json();
+};
+
+export const apiGetBookingStats = async () => {
+  const response = await apiFetch('/bookings/stats');
+  return response.json();
+};
+
+export const apiUpdateBookingStatus = async (id, status) => {
+  const response = await apiFetch(`/bookings/${id}/status`, {
+    method: 'PUT',
+    body: JSON.stringify({ status }),
+  });
+  return response.json();
+};
+
+export const apiRescheduleBooking = async (id, data) => {
+  const response = await apiFetch(`/bookings/${id}/reschedule`, {
+    method: 'PUT',
+    body: JSON.stringify(data),
+  });
+  return response.json();
+};
+
+export const apiUserRescheduleBooking = async (id, data) => {
+  const response = await apiFetch(`/bookings/${id}/user-reschedule`, {
+    method: 'PUT',
+    body: JSON.stringify(data),
+  });
+  return response.json();
+};
+
+// ============================================================
+// Finance API
+// ============================================================
+export const apiGetDoctors = async () => {
+  const response = await apiFetch('/finance/doctors');
+  return response.json();
+};
+
+export const apiGetBalance = async () => {
+  const response = await apiFetch('/finance/balance');
+  return response.json();
+};
+
+export const apiDeposit = async (amount) => {
+  const response = await apiFetch('/finance/deposit', {
+    method: 'POST',
+    body: JSON.stringify({ amount }),
+  });
+  return response.json();
+};
+
+export const apiWithdraw = async (data) => {
+  const response = await apiFetch('/finance/withdraw', {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+  return response.json();
+};
+
+export const apiGetTransactions = async (params = {}) => {
+  const query = new URLSearchParams(params).toString();
+  const response = await apiFetch(`/finance/transactions?${query}`);
+  return response.json();
+};
+
+export const apiRequestRefund = async (data) => {
+  const response = await apiFetch('/finance/refund-request', {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+  return response.json();
+};
+
+export const apiGetRefundRequests = async (params = {}) => {
+  const query = new URLSearchParams(params).toString();
+  const response = await apiFetch(`/finance/refund-requests?${query}`);
+  return response.json();
+};
+
+export const apiApproveRefund = async (id) => {
+  const response = await apiFetch(`/finance/refund-requests/${id}/approve`, { method: 'PUT' });
+  return response.json();
+};
+
+export const apiRejectRefund = async (id) => {
+  const response = await apiFetch(`/finance/refund-requests/${id}/reject`, { method: 'PUT' });
+  return response.json();
+};
+
+export const apiGetFinanceDashboard = async () => {
+  const response = await apiFetch('/finance/dashboard');
   return response.json();
 };

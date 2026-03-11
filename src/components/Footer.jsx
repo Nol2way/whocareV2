@@ -11,7 +11,7 @@ const Footer = () => {
             <div className="sm:content-normal sm:text-start text-center content-center sm:w-auto w-full">
               <Link to="/" className="md:block flex justify-center">
                 <img
-                  src="/images/logo/logo.svg"
+                  src="/images/logo.png"
                   alt="Whocare Clinic"
                   className="h-10 w-auto brightness-0 invert"
                 />
