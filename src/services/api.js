@@ -354,6 +354,11 @@ export const apiGetDoctors = async () => {
   return response.json();
 };
 
+export const apiGetPublicDoctors = async () => {
+  const response = await fetch(`${API_BASE}/finance/doctors`);
+  return response.json();
+};
+
 export const apiGetBalance = async () => {
   const response = await apiFetch('/finance/balance');
   return response.json();
