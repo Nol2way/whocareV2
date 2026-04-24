@@ -22,7 +22,15 @@ const NewsDetailPage = ({ contentType = 'article' }) => {
     try {
       const res = await apiGetNewsDetail(slug);
       if (res.success) {
-        setArticle(res.data);
+        // Backend returns { article: {...}, related: [...] }
+        // Normalize to what the component expects: article object with `related_articles` array
+        const payload = res.data || {};
+        if (payload.article) {
+          const normalized = { ...payload.article, related_articles: payload.related || payload.related_articles || [] };
+          setArticle(normalized);
+        } else {
+          setArticle(payload);
+        }
       } else {
         setArticle(null);
       }

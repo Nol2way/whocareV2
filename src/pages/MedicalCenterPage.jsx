@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Icon } from '@iconify/react';
-import { hospitals } from '../data/data';
+import { hospitals as hospitalsMock } from '../data/data';
+import { apiGetHospitals } from '../services/api';
 import Footer from '../components/Footer';
 
 const CENTERS = [
@@ -68,7 +69,31 @@ const CENTERS = [
 
 const MedicalCenterPage = () => {
   const [selectedCenter, setSelectedCenter] = useState(null);
-  const allBranches = [...hospitals.thailand, ...hospitals.international];
+  const [hospitals, setHospitals] = useState(hospitalsMock);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    let mounted = true;
+    const load = async () => {
+      setLoading(true);
+      try {
+        const res = await apiGetHospitals();
+        if (!mounted) return;
+        if (res && res.success && res.data) {
+          setHospitals(res.data);
+        }
+      } catch (e) {
+        // keep fallback
+        console.error('Failed to load hospitals:', e);
+      } finally {
+        if (mounted) setLoading(false);
+      }
+    };
+    load();
+    return () => { mounted = false; };
+  }, []);
+
+  const allBranches = [...(hospitals?.thailand || []), ...(hospitals?.international || [])];
 
   return (
     <>

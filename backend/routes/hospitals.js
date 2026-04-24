@@ -1,31 +1,9 @@
-// Menu items
-export const menuItems = [
-  { name: "หน้าแรก", href: "/", type: "link" },
-  {
-    name: "บริการ",
-    type: "dropdown",
-    children: [
-      { name: "ค้นหาแพทย์", desc: "ค้นหาแพทย์ผู้เชี่ยวชาญ", href: "/doctors", icon: "mdi:doctor" },
-      // { name: "นัดหมาย", desc: "นัดหมายแพทย์ออนไลน์", href: "/appointment", icon: "mdi:calendar-clock" },
-      { name: "แนะนำบริการ", desc: "บริการทั้งหมดของเรา", href: "/services", icon: "mdi:hand-heart" },
-      { name: "แพ็กเกจ & โปรโมชั่น", desc: "โปรโมชั่นและแพ็กเกจพิเศษ", href: "/packages", icon: "mdi:tag-multiple" },
-      // { name: "ศูนย์ทางการแพทย์", desc: "ศูนย์การแพทย์เฉพาะทาง", href: "/medical-center", icon: "mdi:hospital-building" },
-      // { name: "ชำระค่าบริการ", desc: "ชำระเงินออนไลน์", href: "/payment", icon: "mdi:credit-card" },
-      { name: "นโยบายการคืนเงิน", desc: "เงื่อนไขการคืนเงิน", href: "/refund-policy", icon: "mdi:cash-refund" },
-    ],
-  },
-  {
-    name: "บทความ",
-    type: "dropdown",
-    children: [
-      { name: "บทความสุขภาพ", desc: "ความรู้ด้านสุขภาพ วิเคราะห์ เทคนิคดูแลตัวเอง", href: "/articles", icon: "mdi:notebook-outline" },
-      { name: "ข่าวสาร", desc: "ข่าวสาร กิจกรรม และรายงานเหตุการณ์", href: "/news", icon: "mdi:bullhorn" },
-    ],
-  },
-];
+import { Router } from 'express';
 
-// Clinic branch data
-export const hospitals = {
+const router = Router();
+
+// Static hospitals data (served via API) — mirrors frontend mock
+const hospitals = {
   thailand: [
     {
       name: "Whocare Clinic สยาม",
@@ -81,3 +59,14 @@ export const hospitals = {
   ],
 };
 
+// GET /api/hospitals
+router.get('/', async (req, res) => {
+  try {
+    res.json({ success: true, data: hospitals });
+  } catch (error) {
+    console.error('Hospitals route error:', error);
+    res.status(500).json({ success: false, message: 'เกิดข้อผิดพลาด' });
+  }
+});
+
+export default router;

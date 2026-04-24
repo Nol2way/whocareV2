@@ -43,15 +43,33 @@ const apiFetch = async (endpoint, options = {}) => {
 
   let response = await fetch(url, { ...options, headers });
 
-  // If 401 with TOKEN_EXPIRED, try refresh
+  // If 401, try to handle token refresh or retry without Authorization.
   if (response.status === 401) {
-    const body = await response.json().catch(() => ({}));
+    // Parse body from a clone so we don't consume the original response stream.
+    let body = {};
+    try {
+      body = await response.clone().json().catch(() => ({}));
+    } catch (e) {
+      body = {};
+    }
+
     if (body.code === 'TOKEN_EXPIRED') {
       const refreshed = await refreshAccessToken();
       if (refreshed) {
         headers['Authorization'] = `Bearer ${getAccessToken()}`;
         response = await fetch(url, { ...options, headers });
+      } else {
+        // Refresh failed — clear tokens and try request without Authorization (public fallback)
+        clearTokens();
+        const noAuthHeaders = { ...headers };
+        delete noAuthHeaders.Authorization;
+        response = await fetch(url, { ...options, headers: noAuthHeaders });
       }
+    } else {
+      // Not a token-expired error — maybe the endpoint is public; retry without Authorization header once.
+      const noAuthHeaders = { ...headers };
+      delete noAuthHeaders.Authorization;
+      response = await fetch(url, { ...options, headers: noAuthHeaders });
     }
   }
 
@@ -512,5 +530,15 @@ export const apiDeleteCategory = async (id) => {
 
 export const apiDeleteTag = async (id) => {
   const response = await apiFetch(`/news/admin/tags/${id}`, { method: 'DELETE' });
+  return response.json();
+};
+
+// ============================================================
+// Hospitals API (Public)
+// ============================================================
+export const apiGetHospitals = async (params = {}) => {
+  const query = new URLSearchParams(params).toString();
+  const suffix = query ? `?${query}` : '';
+  const response = await fetch(`${API_BASE}/hospitals${suffix}`);
   return response.json();
 };

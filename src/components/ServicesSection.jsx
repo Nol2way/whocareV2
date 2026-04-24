@@ -283,7 +283,11 @@ const ServicesSection = () => {
                       )}
 
                       {/* Favorite button */}
-                      <button className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/80 dark:bg-darkmode/80 backdrop-blur-sm flex items-center justify-center text-grey hover:text-red-500 transition-colors cursor-pointer">
+                      <button
+                        onClick={(e) => { e.stopPropagation(); console.log('favorite', s.id); }}
+                        aria-label="เพิ่มในรายการโปรด"
+                        className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/80 dark:bg-darkmode/80 backdrop-blur-sm flex items-center justify-center text-grey hover:text-red-500 transition-colors cursor-pointer"
+                      >
                         <Icon icon="mdi:heart-outline" width="18" />
                       </button>
 

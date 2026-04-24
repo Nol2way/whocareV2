@@ -272,10 +272,10 @@ const ServiceDetailPage = () => {
                     สนใจแพ็กเกจ (จอง)
                   </button>
 
-                  <button className="w-full mt-3 inline-flex items-center justify-center gap-2 border-2 border-border dark:border-dark_border text-midnight_text dark:text-white font-semibold py-3 rounded-xl hover:bg-section dark:hover:bg-darklight transition-colors cursor-pointer text-sm">
+                  <a href="/#contact" className="w-full mt-3 inline-flex items-center justify-center gap-2 border-2 border-border dark:border-dark_border text-midnight_text dark:text-white font-semibold py-3 rounded-xl hover:bg-section dark:hover:bg-darklight transition-colors inline-block text-center text-sm">
                     <Icon icon="mdi:phone" width="18" />
                     ติดต่อสอบถาม
-                  </button>
+                  </a>
 
                   {/* Info pills */}
                   <div className="grid grid-cols-2 gap-2 mt-5">

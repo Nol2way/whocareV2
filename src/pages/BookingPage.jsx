@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import Swal from 'sweetalert2';
 import { useAuth } from '../context/AuthContext';
@@ -24,6 +24,7 @@ const isWeekendDate = (dateStr) => { const d = new Date(dateStr + 'T00:00:00'); 
 const BookingPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
   const { user, loading: authLoading } = useAuth();
 
   const [service, setService] = useState(null);
@@ -53,6 +54,10 @@ const BookingPage = () => {
 
   const lockIntervalRef = useRef(null);
   const currentLockRef = useRef(null);
+  const prefDoctorIdRef = useRef(null);
+
+  const clearLockInterval = () => { if (lockIntervalRef.current) { clearInterval(lockIntervalRef.current); lockIntervalRef.current = null; } };
+  const releaseLock = useCallback(async () => { if (currentLockRef.current) { try { await apiUnlockSlot(currentLockRef.current); } catch {} currentLockRef.current = null; } clearLockInterval(); }, []);
 
   useEffect(() => { if (!authLoading && !user) navigate(`/login?redirect=/booking/${id}`); }, [authLoading, user, navigate, id]);
 
@@ -87,6 +92,18 @@ const BookingPage = () => {
     fetchDoctors(params);
   }, [id, service, selectedDate, selectedTime]);
 
+  // Capture preferred doctor id passed via navigation state or query param
+  useEffect(() => {
+    const stateId = location?.state?.preferredDoctorId;
+    if (stateId) {
+      prefDoctorIdRef.current = typeof stateId === 'string' ? parseInt(stateId, 10) : stateId;
+      return;
+    }
+    const q = new URLSearchParams(location.search || '');
+    const qd = q.get('doctor');
+    if (qd) prefDoctorIdRef.current = parseInt(qd, 10);
+  }, [location]);
+
   useEffect(() => {
     if (selectedDate && service) fetchSlots(selectedDate, selectedDoctor?.id || null);
   }, [selectedDate, selectedDoctor, service]);
@@ -111,8 +128,18 @@ const BookingPage = () => {
     setDoctorLoading(true);
     try {
       const r = await apiGetDoctors(params);
-      if (r.success) setDoctors(r.data || []);
-      else setDoctors([]);
+      if (r.success) {
+        const list = r.data || [];
+        setDoctors(list);
+        // Auto-select preferred doctor if present
+        if (prefDoctorIdRef.current && !selectedDoctor) {
+          const match = list.find(d => Number(d.id) === Number(prefDoctorIdRef.current));
+          if (match) {
+            setSelectedDoctor(match);
+            prefDoctorIdRef.current = null;
+          }
+        }
+      } else setDoctors([]);
     } catch {
       setDoctors([]);
     } finally {
@@ -122,8 +149,6 @@ const BookingPage = () => {
   const fetchBalance = async () => { try { const r = await apiGetBalance(); if (r.success) setBalance(r.data.balance); } catch {} };
   const fetchSlots = async (date, doctorId = null) => { setSlotsLoading(true); try { const r = await apiGetBookingSlots(id, date, doctorId); if (r.success) setSlots(r.data.slots); else setSlots([]); } catch { setSlots([]); } finally { setSlotsLoading(false); } };
 
-  const clearLockInterval = () => { if (lockIntervalRef.current) { clearInterval(lockIntervalRef.current); lockIntervalRef.current = null; } };
-  const releaseLock = useCallback(async () => { if (currentLockRef.current) { try { await apiUnlockSlot(currentLockRef.current); } catch {} currentLockRef.current = null; } clearLockInterval(); }, []);
 
   const lockSlot = useCallback(async (date, time) => {
     await releaseLock();
@@ -178,7 +203,21 @@ const BookingPage = () => {
       <Icon icon="mdi:loading" width="40" className="text-primary animate-spin" />
     </div>
   );
-  if (!service) return null;
+  if (!service) return (
+    <>
+      <main className="min-h-screen flex items-center justify-center bg-linear-to-br from-blue-50 via-white to-indigo-50 dark:bg-darkmode">
+        <div className="text-center p-6 bg-white dark:bg-darklight rounded-2xl shadow border border-border">
+          <Icon icon="mdi:alert-circle" width="48" className="text-gray-300 mx-auto mb-3" />
+          <h2 className="text-lg font-bold text-midnight_text dark:text-white mb-2">ไม่พบข้อมูลบริการ</h2>
+          <p className="text-sm text-gray-500 mb-4">ไม่พบบริการที่คุณเรียก ดูว่าลิงก์ถูกต้องหรือกลับไปหน้าหลัก</p>
+          <div className="flex gap-2 justify-center">
+            <button onClick={() => navigate('/')} className="px-4 py-2 rounded-xl bg-linear-to-r from-primary to-blue-400 text-white font-semibold">กลับหน้าหลัก</button>
+          </div>
+        </div>
+      </main>
+      <Footer />
+    </>
+  );
 
   const currPrice = parseFloat(service.price || 0);
   const origPrice = parseFloat(service.original_price || 0);

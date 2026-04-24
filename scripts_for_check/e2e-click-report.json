@@ -1,0 +1,1890 @@
+{
+  "meta": {
+    "startedAt": "2026-04-23T19:34:47.580Z",
+    "FRONTEND_BASE": "http://localhost:5174",
+    "BACKEND_BASE": "http://localhost:5000",
+    "MODE": "dry"
+  },
+  "visited": [
+    "http://localhost:5174/",
+    "http://localhost:5174/doctors",
+    "http://localhost:5174/services",
+    "http://localhost:5174/packages",
+    "http://localhost:5174/refund-policy",
+    "http://localhost:5174/articles",
+    "http://localhost:5174/news",
+    "http://localhost:5174/dashboard",
+    "http://localhost:5174/profile",
+    "http://localhost:5174/my-bookings"
+  ],
+  "results": [
+    {
+      "page": "http://localhost:5174/",
+      "index": 0,
+      "info": {
+        "idx": 0,
+        "tag": "A",
+        "href": "/",
+        "text": "",
+        "visible": true,
+        "outer": "<a href=\"/\" class=\"flex items-center h-full\"><img alt=\"Whocare Hospital\" src=\"/images/logo/logo_whocare.svg\" style=\"height: 90px; width: auto;\"></a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/",
+      "index": 1,
+      "info": {
+        "idx": 1,
+        "tag": "A",
+        "href": "/",
+        "text": "หน้าแรก",
+        "visible": true,
+        "outer": "<a href=\"/\" class=\"text-base font-medium transition-colors hover:text-primary dark:text-white/80 dark:hover:text-primary text-primary\">หน้าแรก</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/",
+      "index": 2,
+      "info": {
+        "idx": 2,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "บริการ",
+        "visible": true,
+        "outer": "<button class=\"cursor-pointer text-base font-medium transition-colors hover:text-primary dark:text-white/80 dark:hover:text-primary flex items-center gap-1 text-midnight_text\">บริการ<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" aria-hidden=\"true\" role=\"img\" class"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/",
+      "index": 7,
+      "info": {
+        "idx": 7,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "บทความ",
+        "visible": true,
+        "outer": "<button class=\"cursor-pointer text-base font-medium transition-colors hover:text-primary dark:text-white/80 dark:hover:text-primary flex items-center gap-1 text-midnight_text\">บทความ<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" aria-hidden=\"true\" role=\"img\" class"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/",
+      "index": 10,
+      "info": {
+        "idx": 10,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "",
+        "visible": true,
+        "outer": "<button aria-label=\"Toggle theme\" class=\"flex h-8 w-8 items-center justify-center text-body-color duration-300 dark:text-white cursor-pointer\"><svg viewBox=\"0 0 16 16\" class=\"hidden h-6 w-6 fill-white dark:block\"><path d=\"M4.50663 3.2267L3.30663 2.03337L2.36663 2.97337L3.55996 4.1667L4.50663 3.2267Z"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/",
+      "index": 11,
+      "info": {
+        "idx": 11,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "฿...",
+        "visible": true,
+        "outer": "<button class=\"flex items-center gap-1.5 bg-green-50 dark:bg-green-500/10 text-green-600 dark:text-green-400 px-3 py-2 rounded-lg hover:bg-green-100 dark:hover:bg-green-500/20 transition-colors cursor-pointer border border-green-200 dark:border-green-500/30\"><svg xmlns=\"http://www.w3.org/2000/svg\" x"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/",
+      "index": 19,
+      "info": {
+        "idx": 19,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "",
+        "visible": true,
+        "outer": "<button class=\"flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-lg hover:bg-primary/20 transition-colors cursor-pointer\"><svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" aria-hidden=\"true\" role=\"img\" class=\"iconify iconify--mdi\" width=\"22\" height"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/",
+      "index": 35,
+      "info": {
+        "idx": 35,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "",
+        "visible": true,
+        "outer": "<button class=\"absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/90 shadow-xl flex items-center justify-center text-midnight_text hover:bg-white transition-all cursor-pointer z-20 opacity-0 group-hover/carousel:opacity-100 duration-300 border border-gray-200\" aria-label=\"Previ"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/",
+      "index": 36,
+      "info": {
+        "idx": 36,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "",
+        "visible": true,
+        "outer": "<button class=\"absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/90 shadow-xl flex items-center justify-center text-midnight_text hover:bg-white transition-all cursor-pointer z-20 opacity-0 group-hover/carousel:opacity-100 duration-300 border border-gray-200\" aria-label=\"Next"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/",
+      "index": 37,
+      "info": {
+        "idx": 37,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "",
+        "visible": true,
+        "outer": "<button class=\"rounded-full transition-all duration-300 cursor-pointer w-8 h-2.5 bg-white\" aria-label=\"Slide 1\"></button>"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/",
+      "index": 38,
+      "info": {
+        "idx": 38,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "",
+        "visible": true,
+        "outer": "<button class=\"rounded-full transition-all duration-300 cursor-pointer w-2.5 h-2.5 bg-white/40 hover:bg-white/70\" aria-label=\"Slide 2\"></button>"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/",
+      "index": 39,
+      "info": {
+        "idx": 39,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "",
+        "visible": true,
+        "outer": "<button class=\"rounded-full transition-all duration-300 cursor-pointer w-2.5 h-2.5 bg-white/40 hover:bg-white/70\" aria-label=\"Slide 3\"></button>"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/",
+      "index": 40,
+      "info": {
+        "idx": 40,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "",
+        "visible": true,
+        "outer": "<button class=\"rounded-full transition-all duration-300 cursor-pointer w-2.5 h-2.5 bg-white/40 hover:bg-white/70\" aria-label=\"Slide 4\"></button>"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/",
+      "index": 41,
+      "info": {
+        "idx": 41,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "ดูทั้งหมด",
+        "visible": true,
+        "outer": "<button class=\"px-4 py-2 rounded-full text-sm font-medium border transition-colors cursor-pointer bg-primary text-white border-primary\">ดูทั้งหมด</button>"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/",
+      "index": 42,
+      "info": {
+        "idx": 42,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "แนะนำบริการ",
+        "visible": true,
+        "outer": "<button class=\"px-4 py-2 rounded-full text-sm font-medium border transition-colors cursor-pointer bg-white dark:bg-darkmode text-midnight_text dark:text-white border-border dark:border-dark_border hover:border-primary hover:text-primary\">แนะนำบริการ</button>"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/",
+      "index": 43,
+      "info": {
+        "idx": 43,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "โปรโมชั่น",
+        "visible": true,
+        "outer": "<button class=\"px-4 py-2 rounded-full text-sm font-medium border transition-colors cursor-pointer bg-white dark:bg-darkmode text-midnight_text dark:text-white border-border dark:border-dark_border hover:border-primary hover:text-primary\">โปรโมชั่น</button>"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/",
+      "index": 44,
+      "info": {
+        "idx": 44,
+        "tag": "A",
+        "href": "/",
+        "text": "",
+        "visible": true,
+        "outer": "<a class=\"md:block flex justify-center\" href=\"/\" data-discover=\"true\"><img alt=\"Whocare Clinic\" class=\"h-10 w-auto brightness-0 invert\" src=\"/images/logo.png\"></a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/",
+      "index": 45,
+      "info": {
+        "idx": 45,
+        "tag": "A",
+        "href": "#contact",
+        "text": "นัดปรึกษาฟรี",
+        "visible": true,
+        "outer": "<a href=\"#contact\" class=\"px-9 py-3 rounded-lg bg-primary text-white hover:bg-blue-700 hover:shadow-none transition-colors\">นัดปรึกษาฟรี</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/",
+      "index": 46,
+      "info": {
+        "idx": 46,
+        "tag": "A",
+        "href": "tel:02-xxx-xxxx",
+        "text": "02-xxx-xxxx",
+        "visible": true,
+        "outer": "<a href=\"tel:02-xxx-xxxx\" class=\"text-2xl text-white/50 hover:text-white transition-colors\">02-xxx-xxxx</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/",
+      "index": 47,
+      "info": {
+        "idx": 47,
+        "tag": "A",
+        "href": "mailto:info@whocare.co.th",
+        "text": "info@whocare.co.th",
+        "visible": true,
+        "outer": "<a href=\"mailto:info@whocare.co.th\" class=\"text-2xl text-white/50 hover:text-white transition-colors\">info@whocare.co.th</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/",
+      "index": 48,
+      "info": {
+        "idx": 48,
+        "tag": "A",
+        "href": "#",
+        "text": "",
+        "visible": true,
+        "outer": "<a href=\"#\"><svg width=\"25\" height=\"25\" viewBox=\"0 0 25 25\" fill=\"#A3BBD1\" xmlns=\"http://www.w3.org/2000/svg\" class=\"group-hover:fill-primary\"><g clip-path=\"url(#clip0_fb)\"><path d=\"M22.9128 0.769043H2.06165C1.34768 0.769472 0.7689 1.34854 0.769043 2.0628V22.9139C0.769472 23.6279 1.34854 24.2067 2.0"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/",
+      "index": 49,
+      "info": {
+        "idx": 49,
+        "tag": "A",
+        "href": "#",
+        "text": "",
+        "visible": true,
+        "outer": "<a href=\"#\"><svg width=\"23\" height=\"23\" viewBox=\"0 0 23 23\" fill=\"#A3BBD1\" xmlns=\"http://www.w3.org/2000/svg\" class=\"group-hover:fill-primary\"><g clip-path=\"url(#clip0_tw)\"><path d=\"M21.3412 0H1.65878C0.742615 0 0 0.742615 0 1.65878V21.3412C0 22.2574 0.742615 23 1.65878 23H21.3412C22.2574 23 23 22.2"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/",
+      "index": 50,
+      "info": {
+        "idx": 50,
+        "tag": "A",
+        "href": "#",
+        "text": "",
+        "visible": true,
+        "outer": "<a href=\"#\"><svg width=\"22\" height=\"23\" viewBox=\"0 0 22 23\" fill=\"#A3BBD1\" xmlns=\"http://www.w3.org/2000/svg\" class=\"group-hover:fill-primary\"><g clip-path=\"url(#clip0_li)\"><path d=\"M20.4133 0H1.58665C0.710327 0 0 0.742615 0 1.65878V21.3412C0 22.2574 0.710327 23 1.58665 23H20.4133C21.2897 23 22 22.2"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/",
+      "index": 51,
+      "info": {
+        "idx": 51,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "สมัครรับข่าว",
+        "visible": true,
+        "outer": "<button type=\"submit\" class=\"p-[0.625rem] text-base font-medium bg-primary text-white border-none cursor-pointer rounded-e-lg outline-0 text-center w-[8.5625rem] hover:bg-blue-700 hover:shadow-none transition-colors\">สมัครรับข่าว</button>"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/",
+      "index": 52,
+      "info": {
+        "idx": 52,
+        "tag": "A",
+        "href": "/#about",
+        "text": "เกี่ยวกับเรา",
+        "visible": true,
+        "outer": "<a href=\"/#about\" class=\"hover:text-primary transition-colors\">เกี่ยวกับเรา</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/",
+      "index": 53,
+      "info": {
+        "idx": 53,
+        "tag": "A",
+        "href": "/#services",
+        "text": "บริการ",
+        "visible": true,
+        "outer": "<a href=\"/#services\" class=\"hover:text-primary transition-colors\">บริการ</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/",
+      "index": 54,
+      "info": {
+        "idx": 54,
+        "tag": "A",
+        "href": "/#portfolio",
+        "text": "ผลงานของเรา",
+        "visible": true,
+        "outer": "<a href=\"/#portfolio\" class=\"hover:text-primary transition-colors\">ผลงานของเรา</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/",
+      "index": 55,
+      "info": {
+        "idx": 55,
+        "tag": "A",
+        "href": "/#contact",
+        "text": "ติดต่อเรา",
+        "visible": true,
+        "outer": "<a href=\"/#contact\" class=\"hover:text-primary transition-colors\">ติดต่อเรา</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/doctors",
+      "index": 0,
+      "info": {
+        "idx": 0,
+        "tag": "A",
+        "href": "/",
+        "text": "",
+        "visible": true,
+        "outer": "<a href=\"/\" class=\"flex items-center h-full\"><img alt=\"Whocare Hospital\" src=\"/images/logo/logo_whocare.svg\" style=\"height: 90px; width: auto;\"></a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/doctors",
+      "index": 1,
+      "info": {
+        "idx": 1,
+        "tag": "A",
+        "href": "/",
+        "text": "หน้าแรก",
+        "visible": true,
+        "outer": "<a href=\"/\" class=\"text-base font-medium transition-colors hover:text-primary dark:text-white/80 dark:hover:text-primary text-midnight_text\">หน้าแรก</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/doctors",
+      "index": 2,
+      "info": {
+        "idx": 2,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "บริการ",
+        "visible": true,
+        "outer": "<button class=\"cursor-pointer text-base font-medium transition-colors hover:text-primary dark:text-white/80 dark:hover:text-primary flex items-center gap-1 text-midnight_text\">บริการ<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" aria-hidden=\"true\" role=\"img\" class"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/doctors",
+      "index": 7,
+      "info": {
+        "idx": 7,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "บทความ",
+        "visible": true,
+        "outer": "<button class=\"cursor-pointer text-base font-medium transition-colors hover:text-primary dark:text-white/80 dark:hover:text-primary flex items-center gap-1 text-midnight_text\">บทความ<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" aria-hidden=\"true\" role=\"img\" class"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/doctors",
+      "index": 10,
+      "info": {
+        "idx": 10,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "",
+        "visible": true,
+        "outer": "<button aria-label=\"Toggle theme\" class=\"flex h-8 w-8 items-center justify-center text-body-color duration-300 dark:text-white cursor-pointer\"><svg viewBox=\"0 0 16 16\" class=\"hidden h-6 w-6 fill-white dark:block\"><path d=\"M4.50663 3.2267L3.30663 2.03337L2.36663 2.97337L3.55996 4.1667L4.50663 3.2267Z"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/doctors",
+      "index": 11,
+      "info": {
+        "idx": 11,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "฿...",
+        "visible": true,
+        "outer": "<button class=\"flex items-center gap-1.5 bg-green-50 dark:bg-green-500/10 text-green-600 dark:text-green-400 px-3 py-2 rounded-lg hover:bg-green-100 dark:hover:bg-green-500/20 transition-colors cursor-pointer border border-green-200 dark:border-green-500/30\"><svg xmlns=\"http://www.w3.org/2000/svg\" x"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/doctors",
+      "index": 19,
+      "info": {
+        "idx": 19,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "",
+        "visible": true,
+        "outer": "<button class=\"flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-lg hover:bg-primary/20 transition-colors cursor-pointer\"><svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" aria-hidden=\"true\" role=\"img\" class=\"iconify iconify--mdi\" width=\"22\" height"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/doctors",
+      "index": 35,
+      "info": {
+        "idx": 35,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "ทั้งหมด",
+        "visible": true,
+        "outer": "<button class=\"flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all bg-primary text-white shadow-md\"><svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" aria-hidden=\"true\" role=\"img\" class=\"iconify iconify--mdi\" width=\"18\" height=\"18\" viewB"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/doctors",
+      "index": 36,
+      "info": {
+        "idx": 36,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "ศัลยกรรม",
+        "visible": true,
+        "outer": "<button class=\"flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all bg-white dark:bg-darklight text-midnight_text dark:text-gray-300 hover:bg-primary/10 border border-border dark:border-gray-700\"><svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/doctors",
+      "index": 37,
+      "info": {
+        "idx": 37,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "ผิวหนัง",
+        "visible": true,
+        "outer": "<button class=\"flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all bg-white dark:bg-darklight text-midnight_text dark:text-gray-300 hover:bg-primary/10 border border-border dark:border-gray-700\"><svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/doctors",
+      "index": 38,
+      "info": {
+        "idx": 38,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "เลเซอร์",
+        "visible": true,
+        "outer": "<button class=\"flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all bg-white dark:bg-darklight text-midnight_text dark:text-gray-300 hover:bg-primary/10 border border-border dark:border-gray-700\"><svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/doctors",
+      "index": 39,
+      "info": {
+        "idx": 39,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "ทันตกรรม",
+        "visible": true,
+        "outer": "<button class=\"flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all bg-white dark:bg-darklight text-midnight_text dark:text-gray-300 hover:bg-primary/10 border border-border dark:border-gray-700\"><svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/doctors",
+      "index": 40,
+      "info": {
+        "idx": 40,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "สุขภาพทั่วไป",
+        "visible": true,
+        "outer": "<button class=\"flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all bg-white dark:bg-darklight text-midnight_text dark:text-gray-300 hover:bg-primary/10 border border-border dark:border-gray-700\"><svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/doctors",
+      "index": 41,
+      "info": {
+        "idx": 41,
+        "tag": "A",
+        "href": "/",
+        "text": "",
+        "visible": true,
+        "outer": "<a class=\"md:block flex justify-center\" href=\"/\" data-discover=\"true\"><img alt=\"Whocare Clinic\" class=\"h-10 w-auto brightness-0 invert\" src=\"/images/logo.png\"></a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/doctors",
+      "index": 42,
+      "info": {
+        "idx": 42,
+        "tag": "A",
+        "href": "#contact",
+        "text": "นัดปรึกษาฟรี",
+        "visible": true,
+        "outer": "<a href=\"#contact\" class=\"px-9 py-3 rounded-lg bg-primary text-white hover:bg-blue-700 hover:shadow-none transition-colors\">นัดปรึกษาฟรี</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/doctors",
+      "index": 43,
+      "info": {
+        "idx": 43,
+        "tag": "A",
+        "href": "tel:02-xxx-xxxx",
+        "text": "02-xxx-xxxx",
+        "visible": true,
+        "outer": "<a href=\"tel:02-xxx-xxxx\" class=\"text-2xl text-white/50 hover:text-white transition-colors\">02-xxx-xxxx</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/doctors",
+      "index": 44,
+      "info": {
+        "idx": 44,
+        "tag": "A",
+        "href": "mailto:info@whocare.co.th",
+        "text": "info@whocare.co.th",
+        "visible": true,
+        "outer": "<a href=\"mailto:info@whocare.co.th\" class=\"text-2xl text-white/50 hover:text-white transition-colors\">info@whocare.co.th</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/doctors",
+      "index": 45,
+      "info": {
+        "idx": 45,
+        "tag": "A",
+        "href": "#",
+        "text": "",
+        "visible": true,
+        "outer": "<a href=\"#\"><svg width=\"25\" height=\"25\" viewBox=\"0 0 25 25\" fill=\"#A3BBD1\" xmlns=\"http://www.w3.org/2000/svg\" class=\"group-hover:fill-primary\"><g clip-path=\"url(#clip0_fb)\"><path d=\"M22.9128 0.769043H2.06165C1.34768 0.769472 0.7689 1.34854 0.769043 2.0628V22.9139C0.769472 23.6279 1.34854 24.2067 2.0"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/doctors",
+      "index": 46,
+      "info": {
+        "idx": 46,
+        "tag": "A",
+        "href": "#",
+        "text": "",
+        "visible": true,
+        "outer": "<a href=\"#\"><svg width=\"23\" height=\"23\" viewBox=\"0 0 23 23\" fill=\"#A3BBD1\" xmlns=\"http://www.w3.org/2000/svg\" class=\"group-hover:fill-primary\"><g clip-path=\"url(#clip0_tw)\"><path d=\"M21.3412 0H1.65878C0.742615 0 0 0.742615 0 1.65878V21.3412C0 22.2574 0.742615 23 1.65878 23H21.3412C22.2574 23 23 22.2"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/doctors",
+      "index": 47,
+      "info": {
+        "idx": 47,
+        "tag": "A",
+        "href": "#",
+        "text": "",
+        "visible": true,
+        "outer": "<a href=\"#\"><svg width=\"22\" height=\"23\" viewBox=\"0 0 22 23\" fill=\"#A3BBD1\" xmlns=\"http://www.w3.org/2000/svg\" class=\"group-hover:fill-primary\"><g clip-path=\"url(#clip0_li)\"><path d=\"M20.4133 0H1.58665C0.710327 0 0 0.742615 0 1.65878V21.3412C0 22.2574 0.710327 23 1.58665 23H20.4133C21.2897 23 22 22.2"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/doctors",
+      "index": 48,
+      "info": {
+        "idx": 48,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "สมัครรับข่าว",
+        "visible": true,
+        "outer": "<button type=\"submit\" class=\"p-[0.625rem] text-base font-medium bg-primary text-white border-none cursor-pointer rounded-e-lg outline-0 text-center w-[8.5625rem] hover:bg-blue-700 hover:shadow-none transition-colors\">สมัครรับข่าว</button>"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/doctors",
+      "index": 49,
+      "info": {
+        "idx": 49,
+        "tag": "A",
+        "href": "/#about",
+        "text": "เกี่ยวกับเรา",
+        "visible": true,
+        "outer": "<a href=\"/#about\" class=\"hover:text-primary transition-colors\">เกี่ยวกับเรา</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/doctors",
+      "index": 50,
+      "info": {
+        "idx": 50,
+        "tag": "A",
+        "href": "/#services",
+        "text": "บริการ",
+        "visible": true,
+        "outer": "<a href=\"/#services\" class=\"hover:text-primary transition-colors\">บริการ</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/doctors",
+      "index": 51,
+      "info": {
+        "idx": 51,
+        "tag": "A",
+        "href": "/#portfolio",
+        "text": "ผลงานของเรา",
+        "visible": true,
+        "outer": "<a href=\"/#portfolio\" class=\"hover:text-primary transition-colors\">ผลงานของเรา</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/doctors",
+      "index": 52,
+      "info": {
+        "idx": 52,
+        "tag": "A",
+        "href": "/#contact",
+        "text": "ติดต่อเรา",
+        "visible": true,
+        "outer": "<a href=\"/#contact\" class=\"hover:text-primary transition-colors\">ติดต่อเรา</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/services",
+      "index": 0,
+      "info": {
+        "idx": 0,
+        "tag": "A",
+        "href": "/",
+        "text": "",
+        "visible": true,
+        "outer": "<a href=\"/\" class=\"flex items-center h-full\"><img alt=\"Whocare Hospital\" src=\"/images/logo/logo_whocare.svg\" style=\"height: 90px; width: auto;\"></a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/services",
+      "index": 1,
+      "info": {
+        "idx": 1,
+        "tag": "A",
+        "href": "/",
+        "text": "หน้าแรก",
+        "visible": true,
+        "outer": "<a href=\"/\" class=\"text-base font-medium transition-colors hover:text-primary dark:text-white/80 dark:hover:text-primary text-midnight_text\">หน้าแรก</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/services",
+      "index": 2,
+      "info": {
+        "idx": 2,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "บริการ",
+        "visible": true,
+        "outer": "<button class=\"cursor-pointer text-base font-medium transition-colors hover:text-primary dark:text-white/80 dark:hover:text-primary flex items-center gap-1 text-midnight_text\">บริการ<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" aria-hidden=\"true\" role=\"img\" class"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/services",
+      "index": 7,
+      "info": {
+        "idx": 7,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "บทความ",
+        "visible": true,
+        "outer": "<button class=\"cursor-pointer text-base font-medium transition-colors hover:text-primary dark:text-white/80 dark:hover:text-primary flex items-center gap-1 text-midnight_text\">บทความ<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" aria-hidden=\"true\" role=\"img\" class"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/services",
+      "index": 10,
+      "info": {
+        "idx": 10,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "",
+        "visible": true,
+        "outer": "<button aria-label=\"Toggle theme\" class=\"flex h-8 w-8 items-center justify-center text-body-color duration-300 dark:text-white cursor-pointer\"><svg viewBox=\"0 0 16 16\" class=\"hidden h-6 w-6 fill-white dark:block\"><path d=\"M4.50663 3.2267L3.30663 2.03337L2.36663 2.97337L3.55996 4.1667L4.50663 3.2267Z"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/services",
+      "index": 11,
+      "info": {
+        "idx": 11,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "฿...",
+        "visible": true,
+        "outer": "<button class=\"flex items-center gap-1.5 bg-green-50 dark:bg-green-500/10 text-green-600 dark:text-green-400 px-3 py-2 rounded-lg hover:bg-green-100 dark:hover:bg-green-500/20 transition-colors cursor-pointer border border-green-200 dark:border-green-500/30\"><svg xmlns=\"http://www.w3.org/2000/svg\" x"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/services",
+      "index": 19,
+      "info": {
+        "idx": 19,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "",
+        "visible": true,
+        "outer": "<button class=\"flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-lg hover:bg-primary/20 transition-colors cursor-pointer\"><svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" aria-hidden=\"true\" role=\"img\" class=\"iconify iconify--mdi\" width=\"22\" height"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/services",
+      "index": 35,
+      "info": {
+        "idx": 35,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "ทั้งหมด",
+        "visible": true,
+        "outer": "<button class=\"flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all bg-primary text-white shadow-md\"><svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" aria-hidden=\"true\" role=\"img\" class=\"iconify iconify--mdi\" width=\"18\" height=\"18\" viewB"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/services",
+      "index": 36,
+      "info": {
+        "idx": 36,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "แนะนำ",
+        "visible": true,
+        "outer": "<button class=\"flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all bg-white dark:bg-darklight text-midnight_text dark:text-gray-300 hover:bg-primary/10 border border-border dark:border-gray-700\"><svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/services",
+      "index": 37,
+      "info": {
+        "idx": 37,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "ศัลยกรรม",
+        "visible": true,
+        "outer": "<button class=\"flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all bg-white dark:bg-darklight text-midnight_text dark:text-gray-300 hover:bg-primary/10 border border-border dark:border-gray-700\"><svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/services",
+      "index": 38,
+      "info": {
+        "idx": 38,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "ผิวหนัง & เลเซอร์",
+        "visible": true,
+        "outer": "<button class=\"flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all bg-white dark:bg-darklight text-midnight_text dark:text-gray-300 hover:bg-primary/10 border border-border dark:border-gray-700\"><svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/services",
+      "index": 39,
+      "info": {
+        "idx": 39,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "สุขภาพ",
+        "visible": true,
+        "outer": "<button class=\"flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all bg-white dark:bg-darklight text-midnight_text dark:text-gray-300 hover:bg-primary/10 border border-border dark:border-gray-700\"><svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/services",
+      "index": 40,
+      "info": {
+        "idx": 40,
+        "tag": "A",
+        "href": "/",
+        "text": "",
+        "visible": true,
+        "outer": "<a class=\"md:block flex justify-center\" href=\"/\" data-discover=\"true\"><img alt=\"Whocare Clinic\" class=\"h-10 w-auto brightness-0 invert\" src=\"/images/logo.png\"></a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/services",
+      "index": 41,
+      "info": {
+        "idx": 41,
+        "tag": "A",
+        "href": "#contact",
+        "text": "นัดปรึกษาฟรี",
+        "visible": true,
+        "outer": "<a href=\"#contact\" class=\"px-9 py-3 rounded-lg bg-primary text-white hover:bg-blue-700 hover:shadow-none transition-colors\">นัดปรึกษาฟรี</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/services",
+      "index": 42,
+      "info": {
+        "idx": 42,
+        "tag": "A",
+        "href": "tel:02-xxx-xxxx",
+        "text": "02-xxx-xxxx",
+        "visible": true,
+        "outer": "<a href=\"tel:02-xxx-xxxx\" class=\"text-2xl text-white/50 hover:text-white transition-colors\">02-xxx-xxxx</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/services",
+      "index": 43,
+      "info": {
+        "idx": 43,
+        "tag": "A",
+        "href": "mailto:info@whocare.co.th",
+        "text": "info@whocare.co.th",
+        "visible": true,
+        "outer": "<a href=\"mailto:info@whocare.co.th\" class=\"text-2xl text-white/50 hover:text-white transition-colors\">info@whocare.co.th</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/services",
+      "index": 44,
+      "info": {
+        "idx": 44,
+        "tag": "A",
+        "href": "#",
+        "text": "",
+        "visible": true,
+        "outer": "<a href=\"#\"><svg width=\"25\" height=\"25\" viewBox=\"0 0 25 25\" fill=\"#A3BBD1\" xmlns=\"http://www.w3.org/2000/svg\" class=\"group-hover:fill-primary\"><g clip-path=\"url(#clip0_fb)\"><path d=\"M22.9128 0.769043H2.06165C1.34768 0.769472 0.7689 1.34854 0.769043 2.0628V22.9139C0.769472 23.6279 1.34854 24.2067 2.0"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/services",
+      "index": 45,
+      "info": {
+        "idx": 45,
+        "tag": "A",
+        "href": "#",
+        "text": "",
+        "visible": true,
+        "outer": "<a href=\"#\"><svg width=\"23\" height=\"23\" viewBox=\"0 0 23 23\" fill=\"#A3BBD1\" xmlns=\"http://www.w3.org/2000/svg\" class=\"group-hover:fill-primary\"><g clip-path=\"url(#clip0_tw)\"><path d=\"M21.3412 0H1.65878C0.742615 0 0 0.742615 0 1.65878V21.3412C0 22.2574 0.742615 23 1.65878 23H21.3412C22.2574 23 23 22.2"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/services",
+      "index": 46,
+      "info": {
+        "idx": 46,
+        "tag": "A",
+        "href": "#",
+        "text": "",
+        "visible": true,
+        "outer": "<a href=\"#\"><svg width=\"22\" height=\"23\" viewBox=\"0 0 22 23\" fill=\"#A3BBD1\" xmlns=\"http://www.w3.org/2000/svg\" class=\"group-hover:fill-primary\"><g clip-path=\"url(#clip0_li)\"><path d=\"M20.4133 0H1.58665C0.710327 0 0 0.742615 0 1.65878V21.3412C0 22.2574 0.710327 23 1.58665 23H20.4133C21.2897 23 22 22.2"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/services",
+      "index": 47,
+      "info": {
+        "idx": 47,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "สมัครรับข่าว",
+        "visible": true,
+        "outer": "<button type=\"submit\" class=\"p-[0.625rem] text-base font-medium bg-primary text-white border-none cursor-pointer rounded-e-lg outline-0 text-center w-[8.5625rem] hover:bg-blue-700 hover:shadow-none transition-colors\">สมัครรับข่าว</button>"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/services",
+      "index": 48,
+      "info": {
+        "idx": 48,
+        "tag": "A",
+        "href": "/#about",
+        "text": "เกี่ยวกับเรา",
+        "visible": true,
+        "outer": "<a href=\"/#about\" class=\"hover:text-primary transition-colors\">เกี่ยวกับเรา</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/services",
+      "index": 49,
+      "info": {
+        "idx": 49,
+        "tag": "A",
+        "href": "/#services",
+        "text": "บริการ",
+        "visible": true,
+        "outer": "<a href=\"/#services\" class=\"hover:text-primary transition-colors\">บริการ</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/services",
+      "index": 50,
+      "info": {
+        "idx": 50,
+        "tag": "A",
+        "href": "/#portfolio",
+        "text": "ผลงานของเรา",
+        "visible": true,
+        "outer": "<a href=\"/#portfolio\" class=\"hover:text-primary transition-colors\">ผลงานของเรา</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/services",
+      "index": 51,
+      "info": {
+        "idx": 51,
+        "tag": "A",
+        "href": "/#contact",
+        "text": "ติดต่อเรา",
+        "visible": true,
+        "outer": "<a href=\"/#contact\" class=\"hover:text-primary transition-colors\">ติดต่อเรา</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/packages",
+      "index": 0,
+      "info": {
+        "idx": 0,
+        "tag": "A",
+        "href": "/",
+        "text": "",
+        "visible": true,
+        "outer": "<a href=\"/\" class=\"flex items-center h-full\"><img alt=\"Whocare Hospital\" src=\"/images/logo/logo_whocare.svg\" style=\"height: 90px; width: auto;\"></a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/packages",
+      "index": 1,
+      "info": {
+        "idx": 1,
+        "tag": "A",
+        "href": "/",
+        "text": "หน้าแรก",
+        "visible": true,
+        "outer": "<a href=\"/\" class=\"text-base font-medium transition-colors hover:text-primary dark:text-white/80 dark:hover:text-primary text-midnight_text\">หน้าแรก</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/packages",
+      "index": 2,
+      "info": {
+        "idx": 2,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "บริการ",
+        "visible": true,
+        "outer": "<button class=\"cursor-pointer text-base font-medium transition-colors hover:text-primary dark:text-white/80 dark:hover:text-primary flex items-center gap-1 text-midnight_text\">บริการ<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" aria-hidden=\"true\" role=\"img\" class"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/packages",
+      "index": 7,
+      "info": {
+        "idx": 7,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "บทความ",
+        "visible": true,
+        "outer": "<button class=\"cursor-pointer text-base font-medium transition-colors hover:text-primary dark:text-white/80 dark:hover:text-primary flex items-center gap-1 text-midnight_text\">บทความ<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" aria-hidden=\"true\" role=\"img\" class"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/packages",
+      "index": 10,
+      "info": {
+        "idx": 10,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "",
+        "visible": true,
+        "outer": "<button aria-label=\"Toggle theme\" class=\"flex h-8 w-8 items-center justify-center text-body-color duration-300 dark:text-white cursor-pointer\"><svg viewBox=\"0 0 16 16\" class=\"hidden h-6 w-6 fill-white dark:block\"><path d=\"M4.50663 3.2267L3.30663 2.03337L2.36663 2.97337L3.55996 4.1667L4.50663 3.2267Z"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/packages",
+      "index": 11,
+      "info": {
+        "idx": 11,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "฿...",
+        "visible": true,
+        "outer": "<button class=\"flex items-center gap-1.5 bg-green-50 dark:bg-green-500/10 text-green-600 dark:text-green-400 px-3 py-2 rounded-lg hover:bg-green-100 dark:hover:bg-green-500/20 transition-colors cursor-pointer border border-green-200 dark:border-green-500/30\"><svg xmlns=\"http://www.w3.org/2000/svg\" x"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/packages",
+      "index": 19,
+      "info": {
+        "idx": 19,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "",
+        "visible": true,
+        "outer": "<button class=\"flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-lg hover:bg-primary/20 transition-colors cursor-pointer\"><svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" aria-hidden=\"true\" role=\"img\" class=\"iconify iconify--mdi\" width=\"22\" height"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/packages",
+      "index": 35,
+      "info": {
+        "idx": 35,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "แพ็กเกจทั้งหมด",
+        "visible": true,
+        "outer": "<button class=\"px-6 py-2.5 rounded-xl text-sm font-medium transition-all bg-primary text-white shadow-md\">แพ็กเกจทั้งหมด</button>"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/packages",
+      "index": 36,
+      "info": {
+        "idx": 36,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "โปรโมชั่น",
+        "visible": true,
+        "outer": "<button class=\"px-6 py-2.5 rounded-xl text-sm font-medium transition-all flex items-center gap-2 bg-white dark:bg-darklight text-midnight_text dark:text-gray-300 border border-border dark:border-gray-700\"><svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" aria-hidden="
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/packages",
+      "index": 37,
+      "info": {
+        "idx": 37,
+        "tag": "A",
+        "href": "/",
+        "text": "",
+        "visible": true,
+        "outer": "<a class=\"md:block flex justify-center\" href=\"/\" data-discover=\"true\"><img alt=\"Whocare Clinic\" class=\"h-10 w-auto brightness-0 invert\" src=\"/images/logo.png\"></a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/packages",
+      "index": 38,
+      "info": {
+        "idx": 38,
+        "tag": "A",
+        "href": "#contact",
+        "text": "นัดปรึกษาฟรี",
+        "visible": true,
+        "outer": "<a href=\"#contact\" class=\"px-9 py-3 rounded-lg bg-primary text-white hover:bg-blue-700 hover:shadow-none transition-colors\">นัดปรึกษาฟรี</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/packages",
+      "index": 39,
+      "info": {
+        "idx": 39,
+        "tag": "A",
+        "href": "tel:02-xxx-xxxx",
+        "text": "02-xxx-xxxx",
+        "visible": true,
+        "outer": "<a href=\"tel:02-xxx-xxxx\" class=\"text-2xl text-white/50 hover:text-white transition-colors\">02-xxx-xxxx</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/packages",
+      "index": 40,
+      "info": {
+        "idx": 40,
+        "tag": "A",
+        "href": "mailto:info@whocare.co.th",
+        "text": "info@whocare.co.th",
+        "visible": true,
+        "outer": "<a href=\"mailto:info@whocare.co.th\" class=\"text-2xl text-white/50 hover:text-white transition-colors\">info@whocare.co.th</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/packages",
+      "index": 41,
+      "info": {
+        "idx": 41,
+        "tag": "A",
+        "href": "#",
+        "text": "",
+        "visible": true,
+        "outer": "<a href=\"#\"><svg width=\"25\" height=\"25\" viewBox=\"0 0 25 25\" fill=\"#A3BBD1\" xmlns=\"http://www.w3.org/2000/svg\" class=\"group-hover:fill-primary\"><g clip-path=\"url(#clip0_fb)\"><path d=\"M22.9128 0.769043H2.06165C1.34768 0.769472 0.7689 1.34854 0.769043 2.0628V22.9139C0.769472 23.6279 1.34854 24.2067 2.0"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/packages",
+      "index": 42,
+      "info": {
+        "idx": 42,
+        "tag": "A",
+        "href": "#",
+        "text": "",
+        "visible": true,
+        "outer": "<a href=\"#\"><svg width=\"23\" height=\"23\" viewBox=\"0 0 23 23\" fill=\"#A3BBD1\" xmlns=\"http://www.w3.org/2000/svg\" class=\"group-hover:fill-primary\"><g clip-path=\"url(#clip0_tw)\"><path d=\"M21.3412 0H1.65878C0.742615 0 0 0.742615 0 1.65878V21.3412C0 22.2574 0.742615 23 1.65878 23H21.3412C22.2574 23 23 22.2"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/packages",
+      "index": 43,
+      "info": {
+        "idx": 43,
+        "tag": "A",
+        "href": "#",
+        "text": "",
+        "visible": true,
+        "outer": "<a href=\"#\"><svg width=\"22\" height=\"23\" viewBox=\"0 0 22 23\" fill=\"#A3BBD1\" xmlns=\"http://www.w3.org/2000/svg\" class=\"group-hover:fill-primary\"><g clip-path=\"url(#clip0_li)\"><path d=\"M20.4133 0H1.58665C0.710327 0 0 0.742615 0 1.65878V21.3412C0 22.2574 0.710327 23 1.58665 23H20.4133C21.2897 23 22 22.2"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/packages",
+      "index": 44,
+      "info": {
+        "idx": 44,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "สมัครรับข่าว",
+        "visible": true,
+        "outer": "<button type=\"submit\" class=\"p-[0.625rem] text-base font-medium bg-primary text-white border-none cursor-pointer rounded-e-lg outline-0 text-center w-[8.5625rem] hover:bg-blue-700 hover:shadow-none transition-colors\">สมัครรับข่าว</button>"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/packages",
+      "index": 45,
+      "info": {
+        "idx": 45,
+        "tag": "A",
+        "href": "/#about",
+        "text": "เกี่ยวกับเรา",
+        "visible": true,
+        "outer": "<a href=\"/#about\" class=\"hover:text-primary transition-colors\">เกี่ยวกับเรา</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/packages",
+      "index": 46,
+      "info": {
+        "idx": 46,
+        "tag": "A",
+        "href": "/#services",
+        "text": "บริการ",
+        "visible": true,
+        "outer": "<a href=\"/#services\" class=\"hover:text-primary transition-colors\">บริการ</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/packages",
+      "index": 47,
+      "info": {
+        "idx": 47,
+        "tag": "A",
+        "href": "/#portfolio",
+        "text": "ผลงานของเรา",
+        "visible": true,
+        "outer": "<a href=\"/#portfolio\" class=\"hover:text-primary transition-colors\">ผลงานของเรา</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/packages",
+      "index": 48,
+      "info": {
+        "idx": 48,
+        "tag": "A",
+        "href": "/#contact",
+        "text": "ติดต่อเรา",
+        "visible": true,
+        "outer": "<a href=\"/#contact\" class=\"hover:text-primary transition-colors\">ติดต่อเรา</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/refund-policy",
+      "index": 0,
+      "info": {
+        "idx": 0,
+        "tag": "A",
+        "href": "/",
+        "text": "",
+        "visible": true,
+        "outer": "<a href=\"/\" class=\"flex items-center h-full\"><img alt=\"Whocare Hospital\" src=\"/images/logo/logo_whocare.svg\" style=\"height: 90px; width: auto;\"></a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/refund-policy",
+      "index": 1,
+      "info": {
+        "idx": 1,
+        "tag": "A",
+        "href": "/",
+        "text": "หน้าแรก",
+        "visible": true,
+        "outer": "<a href=\"/\" class=\"text-base font-medium transition-colors hover:text-primary dark:text-white/80 dark:hover:text-primary text-midnight_text\">หน้าแรก</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/refund-policy",
+      "index": 2,
+      "info": {
+        "idx": 2,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "บริการ",
+        "visible": true,
+        "outer": "<button class=\"cursor-pointer text-base font-medium transition-colors hover:text-primary dark:text-white/80 dark:hover:text-primary flex items-center gap-1 text-midnight_text\">บริการ<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" aria-hidden=\"true\" role=\"img\" class"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/refund-policy",
+      "index": 7,
+      "info": {
+        "idx": 7,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "บทความ",
+        "visible": true,
+        "outer": "<button class=\"cursor-pointer text-base font-medium transition-colors hover:text-primary dark:text-white/80 dark:hover:text-primary flex items-center gap-1 text-midnight_text\">บทความ<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" aria-hidden=\"true\" role=\"img\" class"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/refund-policy",
+      "index": 10,
+      "info": {
+        "idx": 10,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "",
+        "visible": true,
+        "outer": "<button aria-label=\"Toggle theme\" class=\"flex h-8 w-8 items-center justify-center text-body-color duration-300 dark:text-white cursor-pointer\"><svg viewBox=\"0 0 16 16\" class=\"hidden h-6 w-6 fill-white dark:block\"><path d=\"M4.50663 3.2267L3.30663 2.03337L2.36663 2.97337L3.55996 4.1667L4.50663 3.2267Z"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/refund-policy",
+      "index": 11,
+      "info": {
+        "idx": 11,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "฿...",
+        "visible": true,
+        "outer": "<button class=\"flex items-center gap-1.5 bg-green-50 dark:bg-green-500/10 text-green-600 dark:text-green-400 px-3 py-2 rounded-lg hover:bg-green-100 dark:hover:bg-green-500/20 transition-colors cursor-pointer border border-green-200 dark:border-green-500/30\"><svg xmlns=\"http://www.w3.org/2000/svg\" x"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/refund-policy",
+      "index": 19,
+      "info": {
+        "idx": 19,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "",
+        "visible": true,
+        "outer": "<button class=\"flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-lg hover:bg-primary/20 transition-colors cursor-pointer\"><svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" aria-hidden=\"true\" role=\"img\" class=\"iconify iconify--mdi\" width=\"22\" height"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/refund-policy",
+      "index": 35,
+      "info": {
+        "idx": 35,
+        "tag": "A",
+        "href": "/",
+        "text": "",
+        "visible": true,
+        "outer": "<a class=\"md:block flex justify-center\" href=\"/\" data-discover=\"true\"><img alt=\"Whocare Clinic\" class=\"h-10 w-auto brightness-0 invert\" src=\"/images/logo.png\"></a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/refund-policy",
+      "index": 36,
+      "info": {
+        "idx": 36,
+        "tag": "A",
+        "href": "#contact",
+        "text": "นัดปรึกษาฟรี",
+        "visible": true,
+        "outer": "<a href=\"#contact\" class=\"px-9 py-3 rounded-lg bg-primary text-white hover:bg-blue-700 hover:shadow-none transition-colors\">นัดปรึกษาฟรี</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/refund-policy",
+      "index": 37,
+      "info": {
+        "idx": 37,
+        "tag": "A",
+        "href": "tel:02-xxx-xxxx",
+        "text": "02-xxx-xxxx",
+        "visible": true,
+        "outer": "<a href=\"tel:02-xxx-xxxx\" class=\"text-2xl text-white/50 hover:text-white transition-colors\">02-xxx-xxxx</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/refund-policy",
+      "index": 38,
+      "info": {
+        "idx": 38,
+        "tag": "A",
+        "href": "mailto:info@whocare.co.th",
+        "text": "info@whocare.co.th",
+        "visible": true,
+        "outer": "<a href=\"mailto:info@whocare.co.th\" class=\"text-2xl text-white/50 hover:text-white transition-colors\">info@whocare.co.th</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/refund-policy",
+      "index": 39,
+      "info": {
+        "idx": 39,
+        "tag": "A",
+        "href": "#",
+        "text": "",
+        "visible": true,
+        "outer": "<a href=\"#\"><svg width=\"25\" height=\"25\" viewBox=\"0 0 25 25\" fill=\"#A3BBD1\" xmlns=\"http://www.w3.org/2000/svg\" class=\"group-hover:fill-primary\"><g clip-path=\"url(#clip0_fb)\"><path d=\"M22.9128 0.769043H2.06165C1.34768 0.769472 0.7689 1.34854 0.769043 2.0628V22.9139C0.769472 23.6279 1.34854 24.2067 2.0"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/refund-policy",
+      "index": 40,
+      "info": {
+        "idx": 40,
+        "tag": "A",
+        "href": "#",
+        "text": "",
+        "visible": true,
+        "outer": "<a href=\"#\"><svg width=\"23\" height=\"23\" viewBox=\"0 0 23 23\" fill=\"#A3BBD1\" xmlns=\"http://www.w3.org/2000/svg\" class=\"group-hover:fill-primary\"><g clip-path=\"url(#clip0_tw)\"><path d=\"M21.3412 0H1.65878C0.742615 0 0 0.742615 0 1.65878V21.3412C0 22.2574 0.742615 23 1.65878 23H21.3412C22.2574 23 23 22.2"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/refund-policy",
+      "index": 41,
+      "info": {
+        "idx": 41,
+        "tag": "A",
+        "href": "#",
+        "text": "",
+        "visible": true,
+        "outer": "<a href=\"#\"><svg width=\"22\" height=\"23\" viewBox=\"0 0 22 23\" fill=\"#A3BBD1\" xmlns=\"http://www.w3.org/2000/svg\" class=\"group-hover:fill-primary\"><g clip-path=\"url(#clip0_li)\"><path d=\"M20.4133 0H1.58665C0.710327 0 0 0.742615 0 1.65878V21.3412C0 22.2574 0.710327 23 1.58665 23H20.4133C21.2897 23 22 22.2"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/refund-policy",
+      "index": 42,
+      "info": {
+        "idx": 42,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "สมัครรับข่าว",
+        "visible": true,
+        "outer": "<button type=\"submit\" class=\"p-[0.625rem] text-base font-medium bg-primary text-white border-none cursor-pointer rounded-e-lg outline-0 text-center w-[8.5625rem] hover:bg-blue-700 hover:shadow-none transition-colors\">สมัครรับข่าว</button>"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/refund-policy",
+      "index": 43,
+      "info": {
+        "idx": 43,
+        "tag": "A",
+        "href": "/#about",
+        "text": "เกี่ยวกับเรา",
+        "visible": true,
+        "outer": "<a href=\"/#about\" class=\"hover:text-primary transition-colors\">เกี่ยวกับเรา</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/refund-policy",
+      "index": 44,
+      "info": {
+        "idx": 44,
+        "tag": "A",
+        "href": "/#services",
+        "text": "บริการ",
+        "visible": true,
+        "outer": "<a href=\"/#services\" class=\"hover:text-primary transition-colors\">บริการ</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/refund-policy",
+      "index": 45,
+      "info": {
+        "idx": 45,
+        "tag": "A",
+        "href": "/#portfolio",
+        "text": "ผลงานของเรา",
+        "visible": true,
+        "outer": "<a href=\"/#portfolio\" class=\"hover:text-primary transition-colors\">ผลงานของเรา</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/refund-policy",
+      "index": 46,
+      "info": {
+        "idx": 46,
+        "tag": "A",
+        "href": "/#contact",
+        "text": "ติดต่อเรา",
+        "visible": true,
+        "outer": "<a href=\"/#contact\" class=\"hover:text-primary transition-colors\">ติดต่อเรา</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/dashboard",
+      "index": 0,
+      "info": {
+        "idx": 0,
+        "tag": "A",
+        "href": "/",
+        "text": "",
+        "visible": true,
+        "outer": "<a href=\"/\" class=\"flex items-center h-full\"><img alt=\"Whocare Hospital\" src=\"/images/logo/logo_whocare.svg\" style=\"height: 90px; width: auto;\"></a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/dashboard",
+      "index": 1,
+      "info": {
+        "idx": 1,
+        "tag": "A",
+        "href": "/",
+        "text": "หน้าแรก",
+        "visible": true,
+        "outer": "<a href=\"/\" class=\"text-base font-medium transition-colors hover:text-primary dark:text-white/80 dark:hover:text-primary text-midnight_text\">หน้าแรก</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/dashboard",
+      "index": 2,
+      "info": {
+        "idx": 2,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "บริการ",
+        "visible": true,
+        "outer": "<button class=\"cursor-pointer text-base font-medium transition-colors hover:text-primary dark:text-white/80 dark:hover:text-primary flex items-center gap-1 text-midnight_text\">บริการ<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" aria-hidden=\"true\" role=\"img\" class"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/dashboard",
+      "index": 7,
+      "info": {
+        "idx": 7,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "บทความ",
+        "visible": true,
+        "outer": "<button class=\"cursor-pointer text-base font-medium transition-colors hover:text-primary dark:text-white/80 dark:hover:text-primary flex items-center gap-1 text-midnight_text\">บทความ<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" aria-hidden=\"true\" role=\"img\" class"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/dashboard",
+      "index": 10,
+      "info": {
+        "idx": 10,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "",
+        "visible": true,
+        "outer": "<button aria-label=\"Toggle theme\" class=\"flex h-8 w-8 items-center justify-center text-body-color duration-300 dark:text-white cursor-pointer\"><svg viewBox=\"0 0 16 16\" class=\"hidden h-6 w-6 fill-white dark:block\"><path d=\"M4.50663 3.2267L3.30663 2.03337L2.36663 2.97337L3.55996 4.1667L4.50663 3.2267Z"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/dashboard",
+      "index": 11,
+      "info": {
+        "idx": 11,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "฿...",
+        "visible": true,
+        "outer": "<button class=\"flex items-center gap-1.5 bg-green-50 dark:bg-green-500/10 text-green-600 dark:text-green-400 px-3 py-2 rounded-lg hover:bg-green-100 dark:hover:bg-green-500/20 transition-colors cursor-pointer border border-green-200 dark:border-green-500/30\"><svg xmlns=\"http://www.w3.org/2000/svg\" x"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/dashboard",
+      "index": 19,
+      "info": {
+        "idx": 19,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "",
+        "visible": true,
+        "outer": "<button class=\"flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-lg hover:bg-primary/20 transition-colors cursor-pointer\"><svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" aria-hidden=\"true\" role=\"img\" class=\"iconify iconify--mdi\" width=\"22\" height"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/dashboard",
+      "index": 35,
+      "info": {
+        "idx": 35,
+        "tag": "A",
+        "href": "/profile",
+        "text": "โปรไฟล์\n\nดูและแก้ไขข้อมูลส่วนตัว",
+        "visible": true,
+        "outer": "<a class=\"group bg-white dark:bg-darklight rounded-2xl shadow-service border border-border dark:border-dark_border p-5 transition-all duration-200 hover:border-blue-500/40 hover:shadow-lg cursor-pointer\" href=\"/profile\" data-discover=\"true\"><div class=\"flex items-start gap-4\"><div class=\"w-12 h-12 r"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/dashboard",
+      "index": 36,
+      "info": {
+        "idx": 36,
+        "tag": "A",
+        "href": "/my-bookings",
+        "text": "การจองของฉัน\n\nดูนัดหมาย / เลื่อน / คืนเงิน",
+        "visible": true,
+        "outer": "<a class=\"group bg-white dark:bg-darklight rounded-2xl shadow-service border border-border dark:border-dark_border p-5 transition-all duration-200 hover:border-sky-500/40 hover:shadow-lg cursor-pointer\" href=\"/my-bookings\" data-discover=\"true\"><div class=\"flex items-start gap-4\"><div class=\"w-12 h-1"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/profile",
+      "index": 0,
+      "info": {
+        "idx": 0,
+        "tag": "A",
+        "href": "/",
+        "text": "",
+        "visible": true,
+        "outer": "<a href=\"/\" class=\"flex items-center h-full\"><img alt=\"Whocare Hospital\" src=\"/images/logo/logo_whocare.svg\" style=\"height: 90px; width: auto;\"></a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/profile",
+      "index": 1,
+      "info": {
+        "idx": 1,
+        "tag": "A",
+        "href": "/",
+        "text": "หน้าแรก",
+        "visible": true,
+        "outer": "<a href=\"/\" class=\"text-base font-medium transition-colors hover:text-primary dark:text-white/80 dark:hover:text-primary text-midnight_text\">หน้าแรก</a>"
+      },
+      "clicked": false
+    },
+    {
+      "page": "http://localhost:5174/profile",
+      "index": 2,
+      "info": {
+        "idx": 2,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "บริการ",
+        "visible": true,
+        "outer": "<button class=\"cursor-pointer text-base font-medium transition-colors hover:text-primary dark:text-white/80 dark:hover:text-primary flex items-center gap-1 text-midnight_text\">บริการ<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" aria-hidden=\"true\" role=\"img\" class"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/profile",
+      "index": 7,
+      "info": {
+        "idx": 7,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "บทความ",
+        "visible": true,
+        "outer": "<button class=\"cursor-pointer text-base font-medium transition-colors hover:text-primary dark:text-white/80 dark:hover:text-primary flex items-center gap-1 text-midnight_text\">บทความ<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" aria-hidden=\"true\" role=\"img\" class"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/profile",
+      "index": 10,
+      "info": {
+        "idx": 10,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "",
+        "visible": true,
+        "outer": "<button aria-label=\"Toggle theme\" class=\"flex h-8 w-8 items-center justify-center text-body-color duration-300 dark:text-white cursor-pointer\"><svg viewBox=\"0 0 16 16\" class=\"hidden h-6 w-6 fill-white dark:block\"><path d=\"M4.50663 3.2267L3.30663 2.03337L2.36663 2.97337L3.55996 4.1667L4.50663 3.2267Z"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/profile",
+      "index": 11,
+      "info": {
+        "idx": 11,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "฿...",
+        "visible": true,
+        "outer": "<button class=\"flex items-center gap-1.5 bg-green-50 dark:bg-green-500/10 text-green-600 dark:text-green-400 px-3 py-2 rounded-lg hover:bg-green-100 dark:hover:bg-green-500/20 transition-colors cursor-pointer border border-green-200 dark:border-green-500/30\"><svg xmlns=\"http://www.w3.org/2000/svg\" x"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/profile",
+      "index": 19,
+      "info": {
+        "idx": 19,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "",
+        "visible": true,
+        "outer": "<button class=\"flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-lg hover:bg-primary/20 transition-colors cursor-pointer\"><svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" aria-hidden=\"true\" role=\"img\" class=\"iconify iconify--mdi\" width=\"22\" height"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    },
+    {
+      "page": "http://localhost:5174/profile",
+      "index": 36,
+      "info": {
+        "idx": 36,
+        "tag": "BUTTON",
+        "href": null,
+        "text": "OK",
+        "visible": true,
+        "outer": "<button type=\"button\" class=\"swal2-confirm swal2-styled\" aria-label=\"\" style=\"display: inline-block; --swal2-confirm-button-background-color: #3b82f6; --swal2-action-button-focus-box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);\">OK</button>"
+      },
+      "clicked": false,
+      "navigatedTo": null,
+      "error": "Too many arguments. If you need to pass more than 1 argument to the function wrap them in an object."
+    }
+  ]
+}

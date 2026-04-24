@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { Icon } from '@iconify/react';
 import { useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer';
+import { useAuth } from '../context/AuthContext';
+import { apiGetDoctors } from '../services/api';
 
 const SPECIALTIES = [
   { key: 'all', label: 'ทั้งหมด', icon: 'mdi:account-group' },
@@ -11,6 +13,7 @@ const SPECIALTIES = [
   { key: 'dental', label: 'ทันตกรรม', icon: 'mdi:tooth-outline' },
   { key: 'wellness', label: 'สุขภาพทั่วไป', icon: 'mdi:heart-pulse' },
 ];
+
 
 const MOCK_DOCTORS = [
   { id: 1, name: 'นพ. สมชาย เจริญสุข', specialty: 'surgery', experience: 15, image: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=300&q=80', rating: 4.9, reviews: 128, desc: 'ผู้เชี่ยวชาญด้านศัลยกรรมตกแต่ง มีประสบการณ์กว่า 15 ปี' },
@@ -24,14 +27,56 @@ const MOCK_DOCTORS = [
 const DoctorsPage = () => {
   const [search, setSearch] = useState('');
   const [specialty, setSpecialty] = useState('all');
-  const [doctors, setDoctors] = useState(MOCK_DOCTORS);
+  const [doctors, setDoctors] = useState([]);
+  const [loadingDoctors, setLoadingDoctors] = useState(true);
   const navigate = useNavigate();
+  const { loading: authLoading } = useAuth();
 
   const filtered = doctors.filter(d => {
-    const matchSearch = d.name.toLowerCase().includes(search.toLowerCase()) || d.desc.toLowerCase().includes(search.toLowerCase());
-    const matchSpec = specialty === 'all' || d.specialty === specialty;
+    const name = (d.name || '').toLowerCase();
+    const desc = (d.desc || '').toLowerCase();
+    const q = search.toLowerCase();
+    const matchSearch = name.includes(q) || desc.includes(q);
+    const docSpec = d.specialty || 'all';
+    const matchSpec = specialty === 'all' || docSpec === specialty;
     return matchSearch && matchSpec;
   });
+
+  useEffect(() => {
+    let mounted = true;
+    const fetchDoctors = async () => {
+      setLoadingDoctors(true);
+      try {
+        if (!authLoading) {
+          // Request raw users (role=doctor) to populate public doctors list
+          const r = await apiGetDoctors({ raw: 'users' });
+          if (r && r.success) {
+            if (mounted) setDoctors((r.data || []).map(d => ({
+              id: d.id,
+              name: d.name,
+              image: d.image || 'https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&q=80',
+              desc: d.bio || '',
+              rating: d.rating || 0,
+              reviews: d.reviews || 0,
+              experience: d.experience || '',
+              specialty: d.specialty || '',
+              email: d.email || '',
+              phone: d.phone || '',
+            })));
+          } else {
+            if (mounted) setDoctors([]);
+          }
+        }
+      } catch (err) {
+        console.error('Failed to fetch doctors', err);
+        if (mounted) setDoctors([]);
+      } finally {
+        if (mounted) setLoadingDoctors(false);
+      }
+    };
+    fetchDoctors();
+    return () => { mounted = false; };
+  }, [authLoading]);
 
   return (
     <>
@@ -80,46 +125,54 @@ const DoctorsPage = () => {
           </div>
 
           {/* Doctor Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filtered.map((doc, i) => (
-              <div
-                key={doc.id}
-                className="bg-white dark:bg-darklight rounded-2xl overflow-hidden shadow-service dark:shadow-dark-md border border-border/50 dark:border-gray-700/50 hover:shadow-xl transition-all duration-300 group"
-                data-aos="fade-up"
-                data-aos-delay={i * 80}
-              >
-                <div className="relative h-56 overflow-hidden">
-                  <img src={doc.image} alt={doc.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                  <div className="absolute top-3 right-3 bg-white/90 dark:bg-darklight/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-1">
-                    <Icon icon="mdi:star" className="text-yellow-400" width="16" />
-                    <span className="text-sm font-semibold text-midnight_text dark:text-white">{doc.rating}</span>
-                    <span className="text-xs text-grey">({doc.reviews})</span>
+          {loadingDoctors ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[1,2,3,4,5,6].map(i => (
+                <div key={i} className="bg-white dark:bg-darklight rounded-2xl h-72 animate-pulse border border-border/50 dark:border-gray-700/50" />
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filtered.map((doc, i) => (
+                <div
+                  key={doc.id}
+                  className="bg-white dark:bg-darklight rounded-2xl overflow-hidden shadow-service dark:shadow-dark-md border border-border/50 dark:border-gray-700/50 hover:shadow-xl transition-all duration-300 group"
+                  data-aos="fade-up"
+                  data-aos-delay={i * 80}
+                >
+                  <div className="relative h-56 overflow-hidden">
+                    <img src={doc.image} alt={doc.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <div className="absolute top-3 right-3 bg-white/90 dark:bg-darklight/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-1">
+                      <Icon icon="mdi:star" className="text-yellow-400" width="16" />
+                      <span className="text-sm font-semibold text-midnight_text dark:text-white">{doc.rating}</span>
+                      <span className="text-xs text-grey">({doc.reviews})</span>
+                    </div>
+                  </div>
+                  <div className="p-5">
+                    <h3 className="text-lg font-bold text-midnight_text dark:text-white mb-1">{doc.name}</h3>
+                    <p className="text-sm text-grey dark:text-gray-400 mb-3">{doc.desc}</p>
+                    <div className="flex items-center gap-4 mb-4">
+                      <span className="flex items-center gap-1 text-xs text-primary bg-primary/10 px-2.5 py-1 rounded-full">
+                        <Icon icon="mdi:briefcase-outline" width="14" />
+                        {doc.experience} ปี
+                      </span>
+                      <span className="flex items-center gap-1 text-xs text-grey dark:text-gray-400">
+                        <Icon icon="mdi:stethoscope" width="14" />
+                        {SPECIALTIES.find(s => s.key === doc.specialty)?.label}
+                      </span>
+                    </div>
+                    <button
+                      onClick={() => navigate('/appointment', { state: { preferredDoctorId: doc.id } })}
+                      className="w-full py-2.5 bg-primary hover:bg-primary/90 text-white rounded-xl text-sm font-medium transition-colors flex items-center justify-center gap-2"
+                    >
+                      <Icon icon="mdi:calendar-plus" width="18" />
+                      นัดหมายแพทย์
+                    </button>
                   </div>
                 </div>
-                <div className="p-5">
-                  <h3 className="text-lg font-bold text-midnight_text dark:text-white mb-1">{doc.name}</h3>
-                  <p className="text-sm text-grey dark:text-gray-400 mb-3">{doc.desc}</p>
-                  <div className="flex items-center gap-4 mb-4">
-                    <span className="flex items-center gap-1 text-xs text-primary bg-primary/10 px-2.5 py-1 rounded-full">
-                      <Icon icon="mdi:briefcase-outline" width="14" />
-                      {doc.experience} ปี
-                    </span>
-                    <span className="flex items-center gap-1 text-xs text-grey dark:text-gray-400">
-                      <Icon icon="mdi:stethoscope" width="14" />
-                      {SPECIALTIES.find(s => s.key === doc.specialty)?.label}
-                    </span>
-                  </div>
-                  <button
-                    onClick={() => navigate('/appointment')}
-                    className="w-full py-2.5 bg-primary hover:bg-primary/90 text-white rounded-xl text-sm font-medium transition-colors flex items-center justify-center gap-2"
-                  >
-                    <Icon icon="mdi:calendar-plus" width="18" />
-                    นัดหมายแพทย์
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
 
           {filtered.length === 0 && (
             <div className="text-center py-16">

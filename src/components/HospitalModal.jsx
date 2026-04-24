@@ -1,14 +1,35 @@
-import { useState } from 'react';
-import { hospitals } from '../data/data';
+import { useState, useEffect } from 'react';
+import { hospitals as hospitalsMock } from '../data/data';
+import { apiGetHospitals } from '../services/api';
 import { Icon } from '@iconify/react';
 
 const HospitalModal = ({ isOpen, onClose }) => {
   const [activeTab, setActiveTab] = useState('thailand');
+  const [hospitals, setHospitals] = useState(hospitalsMock);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    let mounted = true;
+    const load = async () => {
+      setLoading(true);
+      try {
+        const res = await apiGetHospitals();
+        if (!mounted) return;
+        if (res && res.success && res.data) setHospitals(res.data);
+      } catch (e) {
+        console.error('Failed to load hospitals:', e);
+      } finally {
+        if (mounted) setLoading(false);
+      }
+    };
+    load();
+    return () => { mounted = false; };
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
-  const currentHospitals =
-    activeTab === 'thailand' ? hospitals.thailand : hospitals.international;
+  const currentHospitals = activeTab === 'thailand' ? (hospitals.thailand || []) : (hospitals.international || []);
 
   return (
     <>
@@ -112,9 +133,9 @@ const HospitalModal = ({ isOpen, onClose }) => {
                       </span>
                     ))}
                   </div>
-                  <button className="mt-3 w-full py-2 text-sm font-medium text-primary border border-primary/30 rounded-lg hover:bg-primary hover:text-white transition-colors">
+                  <a href={`tel:${hospital.phone}`} className="mt-3 w-full py-2 text-sm font-medium text-primary border border-primary/30 rounded-lg hover:bg-primary hover:text-white transition-colors inline-block text-center">
                     นัดหมายสาขานี้
-                  </button>
+                  </a>
                 </div>
               ))}
             </div>

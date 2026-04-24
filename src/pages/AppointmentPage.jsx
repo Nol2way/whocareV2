@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Icon } from '@iconify/react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { apiGetPublicServices } from '../services/api';
 import Footer from '../components/Footer';
 
@@ -9,6 +9,7 @@ const AppointmentPage = () => {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const fetch = async () => {
@@ -112,7 +113,7 @@ const AppointmentPage = () => {
                         <span className="text-lg font-bold text-primary">฿{Number(svc.price).toLocaleString()}</span>
                       </div>
                       <button
-                        onClick={() => navigate(`/booking/${svc.id}`)}
+                        onClick={() => navigate(`/booking/${svc.id}`, { state: { preferredDoctorId: location.state?.preferredDoctorId } })}
                         className="px-4 py-2 bg-primary hover:bg-primary/90 text-white rounded-xl text-sm font-medium transition-colors flex items-center gap-1.5"
                       >
                         <Icon icon="mdi:calendar-plus" width="16" />

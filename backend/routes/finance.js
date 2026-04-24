@@ -6,11 +6,30 @@ import { listAvailableDoctors } from '../utils/doctorAvailability.js';
 
 const router = Router();
 
+// Debug: log incoming finance requests (method, path, whether Authorization header present)
+router.use((req, res, next) => {
+  try {
+    console.log(`[finance] ${req.method} ${req.path} Auth:${req.headers.authorization ? 'yes' : 'no'}`);
+  } catch (e) {}
+  next();
+});
+
 // ============================================================
 // GET /api/finance/doctors — List all doctors (public for booking)
 // ============================================================
-router.get('/doctors', authMiddleware, async (req, res) => {
+router.get('/doctors', async (req, res) => {
   try {
+    // If caller wants the raw users list (role=doctor), return that
+    const { raw = '' } = req.query;
+    if (raw === 'users') {
+      const nameSql = `CASE WHEN user_type = 'thai' THEN TRIM(CONCAT(COALESCE(title_th, ''), ' ', COALESCE(first_name_th, ''), ' ', COALESCE(last_name_th, ''))) ELSE TRIM(CONCAT(COALESCE(title_en, ''), ' ', COALESCE(first_name_en, ''), ' ', COALESCE(last_name_en, ''))) END`;
+      const [rows] = await pool.query(
+        `SELECT id, ${nameSql} AS name, email, phone, role, is_active FROM users WHERE role = 'doctor' AND is_active = TRUE ORDER BY name`
+      );
+      return res.json({ success: true, data: rows });
+    }
+
+    // Default behavior: return available doctors (as before)
     const { service_id, branch = '', date = '', time = '', exclude_booking_id = '' } = req.query;
     const parsedServiceId = service_id ? parseInt(service_id, 10) : null;
     const parsedExcludeBookingId = exclude_booking_id ? parseInt(exclude_booking_id, 10) : null;
